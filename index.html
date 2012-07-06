@@ -17,6 +17,9 @@
         .slide p, .slide header{
             margin-bottom:30px;
         }
+        /* .slide section:before{
+            background:none;
+        } */
         .slide h2 a{text-decoration: none;}
 
         .hidden{visibility: hidden;}
@@ -43,11 +46,35 @@
 		}
 
         .slide.warning section{
-           background-color: rgba(0,0,0,.5);
-           background-image: -o-repeating-linear-gradient(-45deg, transparent, transparent 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+           background-color: #fff;
+           background-image: -o-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                             -o-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+           background-image: -moz-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                             -moz-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+           background-image: -ms-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                             -ms-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+           background-image: -webkit-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                             -webkit-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+           background-image: repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                             repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+           background-size: 100% 5rem;
+           background-repeat: repeat-x;
+           background-position: top, bottom;
         }
+        .slide.warning section h2{color:#000}
+        .graphpaper{
+            background-image: url(images/graphpaper.svg);
+            background-position: center;
+        }
+        .demo.graphpaper{
+            width:100%;
+            min-height: 22rem;
+            border: 1px solid rgba(51,102,153,.5);
+            padding:0;
+            background-position:-1px -1px;
+        }
+        .center{display:block; margin:auto;}
 
-        .slide.warning section h2{ background: #fff; color:#000; text-transform:uppercase}
 	</style>
 </head>
 <body class="list">
@@ -73,6 +100,13 @@
 		</section>
 	</div></div>
 
+    <div class="slide shout" id="NotEverythingIsSupportedEverywhere"><div>
+		<section>
+			<header>
+				<h2>Not all browsers support all features (yet).</h2>
+			</header>
+		</section>
+	</div></div>
 
     <div class="slide shout" id="NeedPrefixes"><div>
 		<section>
@@ -84,13 +118,6 @@
 	</div></div>
 
 
-    <div class="slide shout" id="NotEverythingIsSupportedEverywhere"><div>
-		<section>
-			<header>
-				<h2>Not all browsers support all features (yet).</h2>
-			</header>
-		</section>
-	</div></div>
 
 
     <div class="slide shout warning" id="MathAhead"><div>
@@ -101,14 +128,13 @@
 		</section>
 	</div></div>
 
-<div class="slide" id="WhatAreWeTalkingAbout"><div>
+    <div class="slide" id="CoordinateSystem"><div>
 		<section>
 			<header>
-				<h2>What are we talking about?</h2>
+            <h2>Transforms = Linear Algebra in your browser</h2>
 			</header>
-			<ul>
-              <li><b>Transforms:</b> Modifying elements along the X, Y and/or Z axis.</li>
-            </ul>
+			<p><img src="images/coordinates.png" class="center" alt="A coordinate plane with X, Y, and Z axes"></p>
+
 		</section>
 	</div></div>
 
@@ -133,10 +159,14 @@
 		-->
 	<!-- <div class="progress"><div></div></div> -->
 	<script src="scripts/script.js"></script>
-	<script src="demos/modernizr.js"></script>
+	<script src="scripts/modernizr.js"></script>
 
 	<script>
 
+    window.addEventListener('hashchange', function(e){
+        // console.log( e.newURL.match(/#[-_a-zA-Z]{1,100}/) );
+        console.log( window.location.hash );
+    }, false);
 
 
 	</script>
