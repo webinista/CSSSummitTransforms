@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width,user-scalable=yes">
-	<title>Matrix Demo</title>
+	<title>3D Matrix Demo</title>
 	<link rel="stylesheet" href="../styles/s.css" media="screen">
 	<style media="screen">
 	input[type=text]{text-align:right;}
@@ -27,13 +27,13 @@
 </head>
 <body>
 	<header>
-	    <h1>Matrix Demo</h1>
+	    <h1>3D Matrix Demo</h1>
 	    <p>Adjust the values below to see the effect on the object. Use the Reset button or <kbd>esc</kbd> key to reset the form and the object.</p>
 	</header>
 	<article>
 	     <form id="matrix">
             <p>
-            <output id="result" class="center">matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)</output>
+            <output id="result" class="center">matrix(1,0,0,1,0,0)</output>
             </p>
 
             <figure id="object"></figure>
@@ -46,6 +46,7 @@
             <input type="text" name="m14" id="m14" value="1" size="3">
             <input type="text" name="m21" id="m21" value="0" size="3">
             <input type="text" name="m22" id="m22" value="0" size="3">
+
             <button type="reset">Reset</button>
             </p>
 
@@ -59,49 +60,42 @@ var inputs = document.querySelectorAll('input[type=text]'),
     ilen   = inputs.length;
     obj    = document.getElementById('object'),
     form   = document.getElementById('matrix'),
-    out    = document.getElementById('result');
+    out    = document.getElementById('result'),
+    orig   = out.innerHTML;
 
 
-for( var i = 0; i < ilen; i++){
-   (function(num){
-        var onchange = function(e){
-            var inp = inputs,
-            ilen = inp.length,
-            arr = [],
-            o = obj,
-            op = out,
-            tf = Modernizr.prefixed('transform'),
-            str, tn;
+var onchange = function(e){
+    if( e.target.toString() == '[object HTMLInputElement]' ){
+        var inp = inputs,
+        ilen = inp.length,
+        arr = [],
+        o = obj,
+        op = out,
+        tf = Modernizr.prefixed('transform'),
+        str, tn;
 
-            /*
-               If we have items in the array, just replace the
-               changed input field. Otherwise, grab all of the array
-               values and build a string.
-            */
-            if( arr.length > 0 ){
-                arr[num] = inp[num].value;
-            } else {
-                for(var i = 0; i < ilen; i++){
-                    arr[i] = inp[i].value;
-                }
-            }
-            str = 'matrix('+ arr.join(',') +')';
-            o.style[tf] = str;
-
-            tn = document.createTextNode( str );
-
-            if( op.firstChild ){
-                op.replaceChild(tn,op.firstChild);
-            } else {
-                op.appendChild(tn);
-            }
+        for(var i = 0; i < ilen; i++){
+           arr[i] = inp[i].value;
         }
-        inputs[num].addEventListener('change',onchange, false);
-    })(i)
+
+        str = 'matrix('+ arr.join(',') +')';
+        o.style[tf] = str;
+
+        tn = document.createTextNode( str );
+
+        if( op.firstChild ){
+            op.replaceChild(tn,op.firstChild);
+        } else {
+            op.appendChild(tn);
+        }
+    }
 }
+
+form.addEventListener('change',onchange,false);
 
 form.addEventListener('reset', function(e){
     obj.style[Modernizr.prefixed('transform')] = 'none';
+    out.innerHTML = orig;
 },false);
 
 // Reset on esc
@@ -110,6 +104,7 @@ window.addEventListener('keydown', function(e){
        form.reset();
     }
 },false);
+
 </script>
 </body>
 </html>
