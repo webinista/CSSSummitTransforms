@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=1274, user-scalable=no">
 	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
 	<link rel="stylesheet" href="demos/styles/transformorigin.css">
+	<link rel="stylesheet" href="demos/styles/transformsinaction.css">
 	<!-- <link rel="stylesheet" href="cube.css"> -->
 	  <!--
 		To apply styles to the certain slides
@@ -80,12 +81,25 @@
             -o-transition: -o-transform 500ms linear 250ms;
         }
 
-        .fancy{
-            -o-transform: skew(45deg) scale(.5) rotate(-45deg);
-            -o-transition: -o-transform 1s linear 500ms;
+        .full .fancy{
+            /* Opera still needs a prefix. Other browsers do not.*/
+                 -o-transform: skew(45deg) scale(.5) rotate(-45deg);
+            -webkit-transform: skew(45deg) scale(.5) rotate(-45deg);
+               -moz-transform: skew(45deg) scale(.5) rotate(-45deg);
+                -ms-transform: skew(45deg) scale(.5) rotate(-45deg);
+                    transform: skew(45deg) scale(.5) rotate(-45deg);
+
+
+                 -o-transition: -o-transform 1s linear 500ms;
+            -webkit-transition: -webkit-transform 1s linear 500ms;
+               -moz-transition: -moz-transform 1s linear 500ms;
+                -ms-transition: -ms-transform 1s linear 500ms;
+                    transition:  transform 1s linear 500ms;
+
         }
 
         svg{display:block; margin:auto;}
+
         .right{text-align:right;}
         .nowrap{
             word-wrap:none;
@@ -113,7 +127,15 @@
                 -ms-columns: auto 2;
                     columns: auto 2; /* Opera */
         }
+        ul.nobullet > li::before{content: ''}
 
+
+        .box{
+            width:200px;
+            line-height:1.3;
+            color:#666
+        }
+        .box img{width:100%;margin:0}
 	</style>
 </head>
 <body class="list">
@@ -150,7 +172,7 @@
     <div class="slide shout" id="Use_Prefixes"><div>
 		<section>
 			<header>
-				<h2>All properties<br>must be prefixed.<br>
+				<h2>Some browsers still require a prefix<br>
 				<span style="font-size:.5em">-o-, -ms-, -moz-, -webkit-</span></h2>
 			</header>
 		</section>
@@ -202,6 +224,21 @@
 		</section>
 	</div></div>
 
+    <div class="slide" id="Transform_Origin_Property"><div>
+		<section>
+			<header>
+				<h2><code>transform-origin</code> property</code></h2>
+			</header>
+			<p>Specifies the x and y position of the origin, relative to the transform object.</p>
+	        <ul>
+	            <li>Keyword positions: <code>left</code>, <code>right</code>, <code>bottom</code>, <code>top</code>, <code>center</code></li>
+
+	            <li>Percentage values</li>
+	            <li>Length values</li>
+	        </ul>
+  		</section>
+	</div></div>
+
 
     <div class="slide" id="Transform_Origin_Change"><div>
 		<section>
@@ -213,7 +250,7 @@
 	</div></div>
 
 
-	<div class="slide" id="Transform_Origin_Property"><div>
+	<div class="slide" id="Transform_Origin_Demo"><div>
 		<section>
 			<header>
 				<h2><code>transform-origin: x y</code></h2>
@@ -228,7 +265,20 @@
   		</section>
 	</div></div>
 
-  <div class="slide" id="What_is_a_transform"><div>
+    <div class="slide" id="TransformProperty"><div>
+		<section>
+			<header>
+				<h2><code>transform</code> property</h2>
+			</header>
+			<p>Which kind of transform to apply.</p>
+			<ul>
+			    <li><code>transform: function();</code></li>
+			    <li><code>transform: function() function();</code></li>
+            </ul>
+		</section>
+	</div></div>
+
+  <div class="slide" id="What_is_a_transform"><div class="fancy">
 		<section>
 			<header>
 				<h2>What is a transform?</h2>
@@ -239,223 +289,28 @@
 		</section>
 	</div></div>
 
-    <div class="slide shout warning" id="Warning_Advanced_Math_Ahead"><div>
-		<section>
-			<header>
-				<h2>Warning: Advanced Math Ahead</h2>
-			</header>
-		</section>
-	</div></div>
 
-    <div class="slide demo" id="What_is_a_matrix"><div>
+    <div class="slide demo" id="This_is_a_matrix"><div>
 		<section>
 			<header>
 				<h2>This is a matrix</h2>
 			</header>
-           <svg
-           xmlns:dc="http://purl.org/dc/elements/1.1/"
-           xmlns:cc="http://creativecommons.org/ns#"
-           xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-           xmlns:svg="http://www.w3.org/2000/svg"
-           xmlns="http://www.w3.org/2000/svg"
-           xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-           xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-           width="498.457"
-           height="291.12183"
-           id="svg2"
-           version="1.1"
-           inkscape:version="0.48.0 r9654"
-           sodipodi:docname="scalingmatrix.svg">
-          <defs
-             id="defs4" />
-          <sodipodi:namedview
-             id="base"
-             pagecolor="#ffffff"
-             bordercolor="#666666"
-             borderopacity="1.0"
-             inkscape:pageopacity="0.0"
-             inkscape:pageshadow="2"
-             inkscape:zoom="1.01"
-             inkscape:cx="167.17695"
-             inkscape:cy="176.37328"
-             inkscape:document-units="px"
-             inkscape:current-layer="layer1"
-             showgrid="false"
-             units="px"
-             fit-margin-top="0"
-             fit-margin-left="0"
-             fit-margin-right="0"
-             fit-margin-bottom="0"
-             inkscape:window-width="1132"
-             inkscape:window-height="614"
-             inkscape:window-x="121"
-             inkscape:window-y="9"
-             inkscape:window-maximized="0" />
-          <metadata
-             id="metadata7">
-            <rdf:RDF>
-              <cc:Work
-                 rdf:about="">
-                <dc:format>image/svg+xml</dc:format>
-                <dc:type
-                   rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-                <dc:title />
-              </cc:Work>
-            </rdf:RDF>
-          </metadata>
-          <g
-             inkscape:label="Layer 1"
-             inkscape:groupmode="layer"
-             id="layer1"
-             transform="translate(-66.185817,-405.40002)">
-            <path
-               inkscape:connector-curvature="0"
-               id="path3055"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 257.81856,456.2811 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61919,-0.63506 1.35747,-0.95259 2.21484,-0.95262 0.88909,3e-5 1.65118,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95261,2.26247 -10e-6,0.88912 -0.31755,1.64328 -0.95261,2.26246 -0.61922,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88119,-1.3654 -0.88118,-2.28628 m 3.16746,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09552,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54774,8.58944 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,10e-6 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.41329 1.66705,-6.08087 1.66707,-11.00273 -2e-5,-4.93772 -0.55571,-8.61323 -1.66707,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66036,1.55598 8.59737,4.66783 1.95284,3.11191 2.92927,7.70828 2.9293,13.78914 -3e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.93701,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90549,-7.70032 -2.90549,-13.76532 0,-6.08086 0.9685,-10.67723 2.90549,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3057"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 375.18102,456.2811 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61919,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.8891,3e-5 1.65119,0.31756 2.28629,0.95262 0.63506,0.6351 0.95259,1.38926 0.95261,2.26247 -2e-5,0.88912 -0.31755,1.64328 -0.95261,2.26246 -0.61922,0.61922 -1.38131,0.92882 -2.28629,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91367,1.20668 -5.02505,3.61995 -1.09552,2.41332 -1.64328,6.08883 -1.64326,11.02655 -2e-5,4.92186 0.54774,8.58944 1.64326,11.00273 1.11138,2.41329 2.78639,3.61995 5.02505,3.61994 2.25451,10e-6 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.41329 1.66706,-6.08087 1.66708,-11.00273 -2e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66037,1.55598 8.59738,4.66783 1.95284,3.11191 2.92927,7.70828 2.92929,13.78914 -2e-5,6.065 -0.97645,10.65344 -2.92929,13.76532 -1.93701,3.11188 -4.8028,4.66782 -8.59738,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90548,-7.70032 -2.90548,-13.76532 0,-6.08086 0.96849,-10.67723 2.90548,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3059"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 492.54348,456.2811 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61918,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.88909,3e-5 1.65119,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95262,2.26247 -2e-5,0.88912 -0.31756,1.64328 -0.95262,2.26246 -0.61921,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09551,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54775,8.58944 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,10e-6 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.41329 1.66705,-6.08087 1.66708,-11.00273 -3e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66036,1.55598 8.59737,4.66783 1.95284,3.11191 2.92928,7.70828 2.9293,13.78914 -2e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.93701,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90549,-7.70032 -2.90549,-13.76532 0,-6.08086 0.9685,-10.67723 2.90549,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3061"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 140.45611,517.24861 c -1e-5,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61918,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.88909,3e-5 1.65119,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95262,2.26247 -2e-5,0.88912 -0.31756,1.64328 -0.95262,2.26246 -0.61921,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09551,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54775,8.58944 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,10e-6 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.41329 1.66706,-6.08087 1.66708,-11.00273 -2e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66037,1.55598 8.59737,4.66783 1.95284,3.11191 2.92928,7.70828 2.9293,13.78914 -2e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.937,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90548,-7.70032 -2.90548,-13.76532 0,-6.08086 0.96849,-10.67723 2.90548,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3065"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 375.18102,517.24861 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61919,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.8891,3e-5 1.65119,0.31756 2.28629,0.95262 0.63506,0.6351 0.95259,1.38926 0.95261,2.26247 -2e-5,0.88912 -0.31755,1.64328 -0.95261,2.26246 -0.61922,0.61922 -1.38131,0.92882 -2.28629,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91367,1.20668 -5.02505,3.61995 -1.09552,2.41332 -1.64328,6.08883 -1.64326,11.02655 -2e-5,4.92186 0.54774,8.58944 1.64326,11.00273 1.11138,2.41329 2.78639,3.61995 5.02505,3.61994 2.25451,10e-6 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.41329 1.66706,-6.08087 1.66708,-11.00273 -2e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66037,1.55598 8.59738,4.66783 1.95284,3.11191 2.92927,7.70828 2.92929,13.78914 -2e-5,6.065 -0.97645,10.65344 -2.92929,13.76532 -1.93701,3.11188 -4.8028,4.66782 -8.59738,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90548,-7.70032 -2.90548,-13.76532 0,-6.08086 0.96849,-10.67723 2.90548,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3067"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 492.54348,517.24861 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61918,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.88909,3e-5 1.65119,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95262,2.26247 -2e-5,0.88912 -0.31756,1.64328 -0.95262,2.26246 -0.61921,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09551,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54775,8.58944 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,10e-6 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.41329 1.66705,-6.08087 1.66708,-11.00273 -3e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66036,1.55598 8.59737,4.66783 1.95284,3.11191 2.92928,7.70828 2.9293,13.78914 -2e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.93701,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90549,-7.70032 -2.90549,-13.76532 0,-6.08086 0.9685,-10.67723 2.90549,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3069"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 140.45611,578.21612 c -1e-5,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61918,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.88909,3e-5 1.65119,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95262,2.26247 -2e-5,0.88912 -0.31756,1.64328 -0.95262,2.26246 -0.61921,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09551,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54775,8.58943 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,1e-5 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.4133 1.66706,-6.08087 1.66708,-11.00273 -2e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66037,1.55598 8.59737,4.66783 1.95284,3.11191 2.92928,7.70828 2.9293,13.78914 -2e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.937,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90548,-7.70032 -2.90548,-13.76532 0,-6.08086 0.96849,-10.67723 2.90548,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3071"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 257.81856,578.21612 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61919,-0.63506 1.35747,-0.95259 2.21484,-0.95262 0.88909,3e-5 1.65118,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95261,2.26247 -10e-6,0.88912 -0.31755,1.64328 -0.95261,2.26246 -0.61922,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88119,-1.3654 -0.88118,-2.28628 m 3.16746,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09552,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54774,8.58943 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,1e-5 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.4133 1.66705,-6.08087 1.66707,-11.00273 -2e-5,-4.93772 -0.55571,-8.61323 -1.66707,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66036,1.55598 8.59737,4.66783 1.95284,3.11191 2.92927,7.70828 2.9293,13.78914 -3e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.93701,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90549,-7.70032 -2.90549,-13.76532 0,-6.08086 0.9685,-10.67723 2.90549,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3075"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 492.54348,578.21612 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61918,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.88909,3e-5 1.65119,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95262,2.26247 -2e-5,0.88912 -0.31756,1.64328 -0.95262,2.26246 -0.61921,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09551,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54775,8.58943 1.64326,11.00273 1.11138,2.41329 2.7864,3.61995 5.02506,3.61994 2.25451,1e-5 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.4133 1.66705,-6.08087 1.66708,-11.00273 -3e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66036,1.55598 8.59737,4.66783 1.95284,3.11191 2.92928,7.70828 2.9293,13.78914 -2e-5,6.065 -0.97646,10.65344 -2.9293,13.76532 -1.93701,3.11188 -4.80279,4.66782 -8.59737,4.66782 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66782 -1.93699,-3.11188 -2.90549,-7.70032 -2.90549,-13.76532 0,-6.08086 0.9685,-10.67723 2.90549,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3077"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 140.45611,639.18363 c -1e-5,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61918,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.88909,3e-5 1.65119,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95262,2.26247 -2e-5,0.88912 -0.31756,1.64328 -0.95262,2.26246 -0.61921,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09551,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54775,8.58943 1.64326,11.00273 1.11138,2.41329 2.7864,3.61994 5.02506,3.61994 2.25451,0 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.4133 1.66706,-6.08087 1.66708,-11.00273 -2e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66037,1.55598 8.59737,4.66783 1.95284,3.11191 2.92928,7.70828 2.9293,13.78914 -2e-5,6.065 -0.97646,10.65344 -2.9293,13.76531 -1.937,3.11189 -4.80279,4.66783 -8.59737,4.66783 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66783 -1.93699,-3.11187 -2.90548,-7.70031 -2.90548,-13.76531 0,-6.08086 0.96849,-10.67723 2.90548,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3079"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 257.81856,639.18363 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61919,-0.63506 1.35747,-0.95259 2.21484,-0.95262 0.88909,3e-5 1.65118,0.31756 2.28628,0.95262 0.63506,0.6351 0.9526,1.38926 0.95261,2.26247 -10e-6,0.88912 -0.31755,1.64328 -0.95261,2.26246 -0.61922,0.61922 -1.38131,0.92882 -2.28628,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88119,-1.3654 -0.88118,-2.28628 m 3.16746,-14.52742 c -2.23866,3e-5 -3.91368,1.20668 -5.02506,3.61995 -1.09552,2.41332 -1.64327,6.08883 -1.64326,11.02655 -1e-5,4.92186 0.54774,8.58943 1.64326,11.00273 1.11138,2.41329 2.7864,3.61994 5.02506,3.61994 2.25451,0 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.4133 1.66705,-6.08087 1.66707,-11.00273 -2e-5,-4.93772 -0.55571,-8.61323 -1.66707,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66036,1.55598 8.59737,4.66783 1.95284,3.11191 2.92927,7.70828 2.9293,13.78914 -3e-5,6.065 -0.97646,10.65344 -2.9293,13.76531 -1.93701,3.11189 -4.80279,4.66783 -8.59737,4.66783 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66783 -1.93699,-3.11187 -2.90549,-7.70031 -2.90549,-13.76531 0,-6.08086 0.9685,-10.67723 2.90549,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3081"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 375.18102,639.18363 c -10e-6,-0.87321 0.30165,-1.62737 0.90499,-2.26247 0.61919,-0.63506 1.35746,-0.95259 2.21483,-0.95262 0.8891,3e-5 1.65119,0.31756 2.28629,0.95262 0.63506,0.6351 0.95259,1.38926 0.95261,2.26247 -2e-5,0.88912 -0.31755,1.64328 -0.95261,2.26246 -0.61922,0.61922 -1.38131,0.92882 -2.28629,0.9288 -0.88912,2e-5 -1.63534,-0.30164 -2.23865,-0.90498 -0.58746,-0.60331 -0.88118,-1.3654 -0.88117,-2.28628 m 3.16745,-14.52742 c -2.23866,3e-5 -3.91367,1.20668 -5.02505,3.61995 -1.09552,2.41332 -1.64328,6.08883 -1.64326,11.02655 -2e-5,4.92186 0.54774,8.58943 1.64326,11.00273 1.11138,2.41329 2.78639,3.61994 5.02505,3.61994 2.25451,0 3.92953,-1.20665 5.02506,-3.61994 1.11136,-2.4133 1.66706,-6.08087 1.66708,-11.00273 -2e-5,-4.93772 -0.55572,-8.61323 -1.66708,-11.02655 -1.09553,-2.41327 -2.77055,-3.61992 -5.02506,-3.61995 m 0,-3.81047 c 3.79458,4e-5 6.66037,1.55598 8.59738,4.66783 1.95284,3.11191 2.92927,7.70828 2.92929,13.78914 -2e-5,6.065 -0.97645,10.65344 -2.92929,13.76531 -1.93701,3.11189 -4.8028,4.66783 -8.59738,4.66783 -3.7946,0 -6.66039,-1.55594 -8.59737,-4.66783 -1.93699,-3.11187 -2.90548,-7.70031 -2.90548,-13.76531 0,-6.08086 0.96849,-10.67723 2.90548,-13.78914 1.93698,-3.11185 4.80277,-4.66779 8.59737,-4.66783" />
-            <path
-               inkscape:connector-curvature="0"
-               id="path3083"
-               style="font-size:84px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               d="m 487.47079,652.99658 7.47805,0 0,-27.17341 -8.04962,1.80997 0,-4.38204 8.00199,-1.76234 4.81072,0 0,31.50782 7.38278,0 0,4.04862 -19.62392,0 0,-4.04862" />
-            <text
-               xml:space="preserve"
-               style="font-size:23.22571944999999971px;font-style:normal;font-weight:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Sans"
-               x="86.093575"
-               y="416.15427"
-               id="text3104"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan3106"
-                 x="86.093575"
-                 y="416.15427" /></text>
-            <g
-               transform="matrix(0.64812353,0,0,0.56180779,27.755489,146.1571)"
-               style="font-size:581.18731689000003371px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               id="text2985-7">
-              <path
-                 d="m 59.294758,461.44423 58.607312,0 0,18.3164 -40.235782,0 0,481.55472 40.235782,0 0,18.3164 -58.607312,0 0,-518.18752"
-                 id="path3013-9"
-                 inkscape:connector-curvature="0"
-                 sodipodi:nodetypes="ccccccccc"
-                 style="fill:#00004f;fill-opacity:1" />
-              <path
-                 sodipodi:nodetypes="ccccccccc"
-                 inkscape:connector-curvature="0"
-                 id="path3130"
-                 d="m 59.294758,461.44423 58.607312,0 0,18.3164 -40.235782,0 0,481.55472 40.235782,0 0,18.3164 -58.607312,0 0,-518.18752"
-                 style="fill:#00004f;fill-opacity:1" />
-            </g>
-            <g
-               id="g3132"
-               style="font-size:581.18731689000003371px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               transform="matrix(-0.64812353,0,0,0.56180779,603.60853,146.1571)">
-              <path
-                 sodipodi:nodetypes="ccccccccc"
-                 inkscape:connector-curvature="0"
-                 id="path3134"
-                 d="m 59.294758,461.44423 58.607312,0 0,18.3164 -40.235782,0 0,481.55472 40.235782,0 0,18.3164 -58.607312,0 0,-518.18752"
-                 style="fill:#00004f;fill-opacity:1" />
-              <path
-                 d="m 59.294758,461.44423 58.607312,0 0,18.3164 -40.235782,0 0,481.55472 40.235782,0 0,18.3164 -58.607312,0 0,-518.18752"
-                 id="path3136"
-                 inkscape:connector-curvature="0"
-                 sodipodi:nodetypes="ccccccccc"
-                 style="fill:#00004f;fill-opacity:1" />
-            </g>
-            <text
-               xml:space="preserve"
-               style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               x="110.18581"
-               y="473.52185"
-               id="text3031"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan3033"
-                 x="110.18581"
-                 y="473.52185">sx</tspan></text>
-            <text
-               sodipodi:linespacing="125%"
-               id="text3035"
-               y="533.52185"
-               x="230.18581"
-               style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               xml:space="preserve"><tspan
-                 y="533.52185"
-                 x="230.18581"
-                 id="tspan3037"
-                 sodipodi:role="line">sy</tspan></text>
-            <text
-               xml:space="preserve"
-               style="font-size:48px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;line-height:125%;letter-spacing:0px;word-spacing:0px;fill:#00004f;fill-opacity:1;stroke:none;font-family:Monospace;-inkscape-font-specification:Monospace"
-               x="350.18579"
-               y="589.52185"
-               id="text3039"
-               sodipodi:linespacing="125%"><tspan
-                 sodipodi:role="line"
-                 id="tspan3041"
-                 x="350.18579"
-                 y="589.52185">sz</tspan></text>
-          </g>
-        </svg>
-        <p style="margin-top:1rem">Each transform function has a specific matrix.</p>
+            <p>
+            <img src="images/scalingmatrix.svg" type="image/svg+xml" alt="scaling matrix" class="center"></p>
         </section>
 	</div></div>
+
+
+    <div class="slide" id="MatrixMath"><div>
+		<section>
+			<header>
+				<h2>What the browser does: Matrix multiplication</h2>
+			</header>
+			<p><img src="images/matrixtimesvector.svg" alt="Scaling matrix multiplied by a coordinate vector."></p>
+			<p>Coordinate vector &#215; Transform matrix = Transformed coordinates</p>
+		</section>
+	</div></div>
+
 
     <div class="slide" id="MatrixAsVectorFunctions"><div>
 		<section>
@@ -471,7 +326,7 @@
 			    </thead>
 			    <tbody>
 			        <tr>
-			            <td>scale</td> <td> [sx 0 0 sy 0 0]</td>
+			            <td>scale3d</td> <td> [sx 0 0 0 0 sy 0 0 0 0 sz 0 0 0 0 1]</td>
 			        </tr>
 			        <tr>
 			            <td>translate</td> <td>[1 0 0 1 tx ty]</td>
@@ -497,13 +352,14 @@
     <div class="slide" id="MatrixFunctions"><div>
 		<section>
 			<header>
-            <h2>Vectors are parameters for the matrix functions</h2>
+            <h2>Vectors become parameters for the matrix functions</h2>
 			</header>
 			<ul>
-            <li><code class="nowrap">transform: matrix(sx,0,0,sy,0 0);</code></li>
+            <li><code class="nowrap">transform: matrix3d(sx,0,0,0,0,sy,0,0,0,0,sz,0,0,0,0,1);</code></li>
             <li><code>transform: matrix(1,0,0,1,tx,ty);</code></li>
             <li><code>transform: matrix(1,0,tan(a),1,0,0);</code></li>
             <li><code>transform: matrix(1,tan(a),0,1,0,0);</code></li>
+            <li><code>transform: matrix(cos(a),-sin(a),tan(a),0,1,0,0);</code></li>
             </ul>
 		</section>
 	</div></div>
@@ -516,71 +372,6 @@
 		</section>
 	</div></div>
 
-    <div class="slide" id="MatrixMath"><div>
-		<section>
-			<header>
-				<h2>What the browser does: Matrix multiplication</h2>
-			</header>
-			<p><img src="images/matrixtimesvector.svg" alt="Scaling matrix multiplied by a coordinate vector."></p>
-			<p>Coordinate vector &#215; Transform matrix = Transformed coordinates</p>
-		</section>
-	</div></div>
-
-	<div class="slide" id="TransformProperty"><div>
-		<section>
-			<header>
-				<h2><code>transform</code> property</h2>
-			</header>
-			<p>Which kind of transform to apply.</p>
-			<ul>
-			    <li><code>transform: function();</code></li>
-			    <li><code>transform: function() function();</code></li>
-            </ul>
-		</section>
-	</div></div>
-
-<div class="slide" id="2DTransformFunctions"><div>
-		<section>
-			<header>
-				<h2>2D <code>transform</code> functions</h2>
-			</header>
-            <ul class="twocol">
-                <li><code>matrix(a,b,c,d,e,f)</code></li>
-                <li><code>rotate(a)</code></li>
-                <li><code>translate(tx[,ty])</code></li>
-                <li><code>translateX(tx)</code></li>
-                <li><code>translateY(ty)</code></li>
-                <li><code>scale(sx[,sy])</code></li>
-                <li><code>scaleX(sx)</code></li>
-                <li><code>scaleY(sy)</code></li>
-                <li><code>skewX(a)</code></li>
-                <li><code>skewY(a)</code></li>
-            </ul>
-		</section>
-	</div></div>
-
-	<div class="slide" id="3DTransformFunctions"><div>
-		<section>
-			<header>
-				<h2>3D <code>transform</code> functions</h2>
-			</header>
-            <ul class="nobullet nomargin">
-                <li><code>matrix3d(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p)</code></li>
-            </ul>
-            <ul class="twocol nobullet nomargin" style="margin-top:-2.7rem;">
-                <li><code>translate3d(tx, ty, tz)</code></li>
-                <li><code>translateZ(tz)</code></li>
-                <li><code>scale3d(n,n,n)</code></li>
-                <li><code>scaleZ(n)</code></li>
-                <li><code>rotate3d(n, n, n, a)</code></li>
-                <li><code>rotateX(a)</code></li>
-                <li><code>rotateY(a)</code></li>
-                <li><code>rotateZ(a)</code></li>
-                <li><code>perspective(len)</code></li>
-            </ul>
-		</section>
-	</div></div>
-
 
 
     <div class="slide" id="MultiplyingMatrices"><div>
@@ -589,9 +380,84 @@
 				<h2>Matrix Multiplication: Compound transforms</h2>
 			</header>
 			<p><img src="images/compoundmatrix.svg" alt="Scaling matrix multiplied by a coordinate vector." style="display:block;margin:auto"></p>
-
 		</section>
 	</div></div>
+
+   <div class="slide shout" id="Thats_A_Lot_Of_Math"><div>
+		<section>
+			<header>
+            <h2>That's a lot of math!</h2>
+			</header>
+		</section>
+	</div></div>
+
+
+
+    <div class="slide" id="2DTransformFunctions"><div>
+		<section>
+			<header>
+				<h2>2D transform functions</h2>
+			</header>
+            <ul class="twocol nobullet">
+                <li><code>matrix(a,b,c,d,e,f)</code></li>
+                <li><code>rotate(ang)</code></li>
+                <li><code>translate(tx[,ty])</code></li>
+                <li><code>translateX(tx)</code></li>
+                <li><code>translateY(ty)</code></li>
+                <li><code>scale(sx[,sy])</code></li>
+                <li><code>scaleX(sx)</code></li>
+                <li><code>scaleY(sy)</code></li>
+                <li><code>skewX(ang)</code></li>
+                <li><code>skewY(ang)</code></li>
+            </ul>
+		</section>
+	</div></div>
+
+
+	<div class="slide" id="TwoDTransformExamples"><div>
+		<section>
+			<header>
+				<h2>2D Transforms in action</h2>
+			</header>
+            <div class="stdemowrap">
+                <div class="stdemo"></div>
+                <form>
+                    <button type="button" id="rotate">rotate</button>
+                    <button type="button" id="skewX">skewX</button>
+                    <button type="button" id="skewY">skewY</button>
+                    <button type="button" id="scale">scale</button>
+                    <button type="button" id="translate">translate</button>
+                    <button type="button">clear</button>
+                </form>
+            </div>
+		</section>
+	</div></div>
+
+
+
+	<div class="slide" id="3DTransformFunctions"><div>
+		<section>
+			<header>
+				<h2>3D transform functions</h2>
+			</header>
+            <ul class="nobullet">
+                <li><code>matrix3d(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p)</code></li>
+            </ul>
+            <ul class="twocol nobullet" style="margin-top:-2.7rem;">
+                <li><code>translate3d(tx, ty, tz)</code></li>
+                <li><code>translateZ(tz)</code></li>
+                <li><code>scale3d(n,n,n)</code></li>
+                <li><code>scaleZ(n)</code></li>
+                <li><code>rotate3d(n, n, n, ang)</code></li>
+                <li><code>rotateX(ang)</code></li>
+                <li><code>rotateY(ang)</code></li>
+                <li><code>rotateZ(ang)</code></li>
+                <li><code>perspective(len)</code></li>
+            </ul>
+		</section>
+	</div></div>
+
+
 
 
 
@@ -635,11 +501,11 @@
     var transformorigin = document.getElementById('transformtrigger')
 
     window.addEventListener('hashchange', function(e){
-        var wat = document.querySelector('#WhatAreTransforms > div');
+        var wat = document.querySelector('#What_is_a_transform > div');
 
         if( window.location.search == '?full'){
 
-            if(window.location.hash == '#WhatAreTransforms'){
+            if(window.location.hash == '#What_is_a_transform'){
                 if( wat.classList.contains('fancy') ){
                     wat.classList.remove('fancy');
                 }
