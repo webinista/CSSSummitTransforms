@@ -106,6 +106,14 @@
             text-align:right;
         }
         .note a{color:inherit;}
+        .twocol{
+             -khtml-columns: auto 2;
+            -webkit-columns: auto 2;
+               -moz-columns: auto 2;
+                -ms-columns: auto 2;
+                    columns: auto 2; /* Opera */
+        }
+
 	</style>
 </head>
 <body class="list">
@@ -226,6 +234,7 @@
 				<h2>What is a transform?</h2>
 			</header>
 			<p>A mathematical function that alters an object while preserving the algebraic or geometric structure of it, often expressed as a matrix.</p>
+
             <p class="note right"><a href="http://en.wikipedia.org/wiki/Transformation_%28function%29" target="_blank">Source</a></p>
 		</section>
 	</div></div>
@@ -462,7 +471,7 @@
 			    </thead>
 			    <tbody>
 			        <tr>
-			            <td>scale (3D)</td> <td> [sx 0 0 0 0 sy 0 0 0 0 sz 0 0 0 0 p]</td>
+			            <td>scale</td> <td> [sx 0 0 sy 0 0]</td>
 			        </tr>
 			        <tr>
 			            <td>translate</td> <td>[1 0 0 1 tx ty]</td>
@@ -491,10 +500,10 @@
             <h2>Vectors are parameters for the matrix functions</h2>
 			</header>
 			<ul>
-            <li><code class="nowrap">transform: matrix3d(sx,0,0,0,0,sy,0,0,0,0,sz,0,0,0,0,p);</code></li>
-            <li><code>transform: matrix(sx,0,0,sy,0,0);</code></li>
+            <li><code class="nowrap">transform: matrix(sx,0,0,sy,0 0);</code></li>
             <li><code>transform: matrix(1,0,0,1,tx,ty);</code></li>
-            <li><code>transform: matrix(1,0.7854,0,1,0,0);</code></li>
+            <li><code>transform: matrix(1,0,tan(a),1,0,0);</code></li>
+            <li><code>transform: matrix(1,tan(a),0,1,0,0);</code></li>
             </ul>
 		</section>
 	</div></div>
@@ -516,6 +525,75 @@
 			<p>Coordinate vector &#215; Transform matrix = Transformed coordinates</p>
 		</section>
 	</div></div>
+
+	<div class="slide" id="TransformProperty"><div>
+		<section>
+			<header>
+				<h2><code>transform</code> property</h2>
+			</header>
+			<p>Which kind of transform to apply.</p>
+			<ul>
+			    <li><code>transform: function();</code></li>
+			    <li><code>transform: function() function();</code></li>
+            </ul>
+		</section>
+	</div></div>
+
+<div class="slide" id="2DTransformFunctions"><div>
+		<section>
+			<header>
+				<h2>2D <code>transform</code> functions</h2>
+			</header>
+            <ul class="twocol">
+                <li><code>matrix(a,b,c,d,e,f)</code></li>
+                <li><code>rotate(a)</code></li>
+                <li><code>translate(tx[,ty])</code></li>
+                <li><code>translateX(tx)</code></li>
+                <li><code>translateY(ty)</code></li>
+                <li><code>scale(sx[,sy])</code></li>
+                <li><code>scaleX(sx)</code></li>
+                <li><code>scaleY(sy)</code></li>
+                <li><code>skewX(a)</code></li>
+                <li><code>skewY(a)</code></li>
+            </ul>
+		</section>
+	</div></div>
+
+	<div class="slide" id="3DTransformFunctions"><div>
+		<section>
+			<header>
+				<h2>3D <code>transform</code> functions</h2>
+			</header>
+            <ul class="nobullet nomargin">
+                <li><code>matrix3d(a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p)</code></li>
+            </ul>
+            <ul class="twocol nobullet nomargin" style="margin-top:-2.7rem;">
+                <li><code>translate3d(tx, ty, tz)</code></li>
+                <li><code>translateZ(tz)</code></li>
+                <li><code>scale3d(n,n,n)</code></li>
+                <li><code>scaleZ(n)</code></li>
+                <li><code>rotate3d(n, n, n, a)</code></li>
+                <li><code>rotateX(a)</code></li>
+                <li><code>rotateY(a)</code></li>
+                <li><code>rotateZ(a)</code></li>
+                <li><code>perspective(len)</code></li>
+            </ul>
+		</section>
+	</div></div>
+
+
+
+    <div class="slide" id="MultiplyingMatrices"><div>
+		<section>
+			<header>
+				<h2>Matrix Multiplication: Compound transforms</h2>
+			</header>
+			<p><img src="images/compoundmatrix.svg" alt="Scaling matrix multiplied by a coordinate vector." style="display:block;margin:auto"></p>
+
+		</section>
+	</div></div>
+
+
 
 
 
