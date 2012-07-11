@@ -1,0 +1,26 @@
+body{
+    font: 100% / 1.5 helvetica,'liberation sans',arial;
+    margin:0;
+    padding:0
+}
+
+header,article,footer{
+    background:#fff;
+    width:95%;
+    margin:0 auto;
+    padding:0
+}
+figure{display;block;margin:auto;}
+input{font: 1.1rem / 1 monospace;}
+.center{text-align:center;}
+.right{text-align:right;}
+label,form p{font-family:monospace}
+form p{
+    margin:1rem;
+}
+button{
+    font: 1.2rem / 1.5 helvetica,'liberation sans',arial;
+    background: hsl(202, 100%, 50%);
+    border:1px solid hsl(202, 100%, 50%);
+    color:#fff;
+}
