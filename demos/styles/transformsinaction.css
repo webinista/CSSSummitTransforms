@@ -1,0 +1,71 @@
+.stdemo{
+    width: 250px;
+    height: 250px;
+    background: hsl(210, 100%, 50%);
+    margin: 0 auto 2rem auto;
+}
+.stdemo.scale{
+    -webkit-transform: scale(.6);
+         -o-transform: scale(.6);
+       -moz-transform: scale(.6);
+        -ms-transform: scale(.6);
+            transform: scale(.6);
+}
+.stdemo.rotate{
+    -webkit-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+}
+.stdemo.skewX{
+    -webkit-transform: skewX(-45deg);
+         -o-transform: skewX(-45deg);
+       -moz-transform: skewX(-45deg);
+        -ms-transform: skewX(-45deg);
+            transform: skewX(-45deg);
+}
+.stdemo.skewY{
+    -webkit-transform: skewY(-45deg);
+         -o-transform: skewY(-45deg);
+       -moz-transform: skewY(-45deg);
+        -ms-transform: skewY(-45deg);
+            transform: skewY(-45deg);
+}
+.stdemo.translate{
+    -webkit-transform: translate(-270px,100px);
+         -o-transform: translate(-270px,100px);
+       -moz-transform: translate(-270px,100px);
+        -ms-transform: translate(-270px,100px);
+            transform: translate(-270px,100px);
+}
+
+.stdemo.scale3d{
+    -webkit-transform: scale3d(1.1,.6,1);
+         -o-transform: scale3d(1.1,.6,1);
+       -moz-transform: scale3d(1.1,.6,1);
+        -ms-transform: scale3d(1.1,.6,1);
+            transform: scale3d(1.1,.6,1);
+}
+.stdemo.rotate3d{
+    -webkit-transform: rotate3d(100,150,90,45deg);
+         -o-transform: rotate3d(100,150,90,45deg);
+       -moz-transform: rotate3d(100,150,90,45deg);
+        -ms-transform: rotate3d(100,150,90,45deg);
+            transform: rotate3d(100,150,90,45deg);
+}
+
+.stdemo.translate3d{
+    -webkit-transform: translate3d(-270px,30px,-200px);
+         -o-transform: translate3d(-270px,30px,-200px);
+       -moz-transform: translate3d(-270px,30px,-200px);
+        -ms-transform: translate3d(-270px,30px,-200px);
+            transform: translate3d(-270px,30px,-200px);
+}
+.stdemo.perspective{
+    -webkit-transform: perspective(200) rotate3d(100,150,90,35deg);
+         -o-transform: perspective(200) rotate3d(100,150,90,35deg);
+       -moz-transform: perspective(200) rotate3d(100,150,90,35deg);
+        -ms-transform: perspective(200) rotate3d(100,150,90,35deg);
+            transform: perspective(200) rotate3d(100,150,90,35deg);
+}
