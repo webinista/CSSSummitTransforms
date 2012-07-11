@@ -136,6 +136,7 @@
             color:#666
         }
         .box img{width:100%;margin:0}
+        form{text-align:center}
 	</style>
 </head>
 <body class="list">
@@ -419,17 +420,15 @@
 			<header>
 				<h2>2D Transforms in action</h2>
 			</header>
-            <div class="stdemowrap">
-                <div class="stdemo"></div>
-                <form>
-                    <button type="button" id="rotate">rotate</button>
-                    <button type="button" id="skewX">skewX</button>
-                    <button type="button" id="skewY">skewY</button>
-                    <button type="button" id="scale">scale</button>
-                    <button type="button" id="translate">translate</button>
-                    <button type="button">clear</button>
-                </form>
-            </div>
+            <div id="twoDtransformObj" class="stdemo"></div>
+            <form id="twoDtransforms">
+                <p><button type="button" id="rotate">rotate</button>
+                <button type="button" id="skewX">skewX</button>
+                <button type="button" id="skewY">skewY</button>
+                <button type="button" id="scale">scale</button>
+                <button type="button" id="translate">translate</button>
+                <button type="reset">clear</button></p>
+            </form>
 		</section>
 	</div></div>
 
@@ -459,7 +458,21 @@
 
 
 
-
+	<div class="slide" id="ThreeDTransformExamples"><div>
+		<section>
+			<header>
+				<h2>3D Transforms in action</h2>
+			</header>
+            <div id="threeDtransformObj" class="stdemo"></div>
+            <form id="threeDtransforms">
+                <button type="button" id="rotate3d">rotate3d</button>
+                <button type="button" id="scale3d">scale3d</button>
+                <button type="button" id="translate3d">translate3d</button>
+                <button type="button" id="perspective">perspective</button>
+                <button type="reset">clear</button>
+            </form>
+		</section>
+	</div></div>
 
 
 
@@ -489,46 +502,69 @@
 
 
 
-	<!--
-		To hide progress bar from entire presentation
-		just remove “progress” element.
-		-->
-	<!-- <div class="progress"><div></div></div> -->
-	<script src="scripts/script.js"></script>
-	<script src="scripts/modernizr.js"></script>
+<!--
+    To hide progress bar from entire presentation
+    just remove “progress” element.
+    -->
+<!-- <div class="progress"><div></div></div> -->
+<script src="scripts/script.js"></script>
+<script src="scripts/modernizr.js"></script>
 
-	<script>
-    var transformorigin = document.getElementById('transformtrigger')
+<script>
+var transformorigin = document.getElementById('transformtrigger');
+var td = document.getElementById('twoDtransforms');
+var thd = document.getElementById('threeDtransforms');
 
-    window.addEventListener('hashchange', function(e){
-        var wat = document.querySelector('#What_is_a_transform > div');
+window.addEventListener('hashchange', function(e){
+    var wat = document.querySelector('#What_is_a_transform > div');
 
-        if( window.location.search == '?full'){
+    if( window.location.search == '?full'){
 
-            if(window.location.hash == '#What_is_a_transform'){
-                if( wat.classList.contains('fancy') ){
-                    wat.classList.remove('fancy');
-                }
-            } else {
-                wat.classList.add('fancy');
+        if(window.location.hash == '#What_is_a_transform'){
+            if( wat.classList.contains('fancy') ){
+                wat.classList.remove('fancy');
             }
-         }
-    }, false);
+        } else {
+            wat.classList.add('fancy');
+        }
+     }
+}, false);
 
+transformorigin.addEventListener('click', function(e){
+        var demos = document.getElementsByClassName('transordemof'),
+            len = demos.length;
 
-    transformorigin.addEventListener('click', function(e){
-            var demos = document.getElementsByClassName('transordemof'),
-                len = demos.length;
+        for(var x=0; x < len; x++){
+            demos[x].classList.toggle('rotate');
+        }
+}, false);
 
-            for(var x=0; x < len; x++){
-                demos[x].classList.toggle('rotate');
-            }
+td.addEventListener('click', function(e){
+   if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
+        document.getElementById('twoDtransformObj').classList.toggle(e.target.id);
+   }
+},false);
 
-       }, false);
+td.addEventListener('reset', function(e){
+   var twoDObj = document.getElementById('twoDtransformObj')
+   var notstdemo = twoDObj.classList.item(1);
+   twoDObj.classList.remove(notstdemo);
+},false);
 
+thd.addEventListener('click', function(e){
+   if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
+        document.getElementById('threeDtransformObj').classList.toggle(e.target.id);
+   }
+},false);
 
-	</script>
-	<!-- Shower presentation software, Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
+thd.addEventListener('reset', function(e){
+   var threeDObj = document.getElementById('threeDtransformObj')
+   var notstdemo = threeDObj.classList.item(1);
+   threeDObj.classList.remove(notstdemo);
+},false);
+
+</script>
+<!-- Shower presentation software, Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
 
 </body>
 </html>
