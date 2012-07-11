@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Matrix Demo</title>
+	<link rel="stylesheet" href="../styles/s.css" media="screen">
+	<style media="screen">
+	input[type=text]{text-align:right;}
+    #object{
+        border:2px solid #333;
+        width: 250px;
+        height: 250px;
+        background: hsla(315, 100%, 40%, .7);
+        color:#fff;
+    }
+    #result{
+        font-size: 1.3rem;
+        display:block;
+    }
+    header{
+        width:60rem;
+    }
+    h1{margin:1rem 0 0 0;}
+    p{margin:0 0 0 0;}
+	</style>
+</head>
+<body>
+	<header>
+	    <h1>Matrix Demo</h1>
+	    <p>Adjust the values below to see the effect on the object. Use the Reset button or <kbd>esc</kbd> key to reset the form and the object.</p>
+	</header>
+	<article>
+	     <form id="matrix">
+            <p>
+            <output id="result" class="center">matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)</output>
+            </p>
+
+            <figure id="object"></figure>
+
+
+            <p class="center">
+            <input type="text" name="m11" id="m11" value="1" size="3">
+            <input type="text" name="m12" id="m12" value="0" size="3">
+            <input type="text" name="m13" id="m13" value="0" size="3">
+            <input type="text" name="m14" id="m14" value="1" size="3">
+            <input type="text" name="m21" id="m21" value="0" size="3">
+            <input type="text" name="m22" id="m22" value="0" size="3">
+            <button type="reset">Reset</button>
+            </p>
+
+        </form>
+	</article>
+	<aside></aside>
+	<footer></footer>
+<script src="../../scripts/modernizr.js"></script>
+<script type="text/javascript">
+var inputs = document.querySelectorAll('input[type=text]'),
+    ilen   = inputs.length;
+    obj    = document.getElementById('object'),
+    form   = document.getElementById('matrix'),
+    out    = document.getElementById('result');
+
+
+for( var i = 0; i < ilen; i++){
+   (function(num){
+        var onchange = function(e){
+            var inp = inputs,
+            ilen = inp.length,
+            arr = [],
+            o = obj,
+            op = out,
+            tf = Modernizr.prefixed('transform'),
+            str, tn;
+
+            /*
+               If we have items in the array, just replace the
+               changed input field. Otherwise, grab all of the array
+               values and build a string.
+            */
+            if( arr.length > 0 ){
+                arr[num] = inp[num].value;
+            } else {
+                for(var i = 0; i < ilen; i++){
+                    arr[i] = inp[i].value;
+                }
+            }
+            str = 'matrix('+ arr.join(',') +')';
+            o.style[tf] = str;
+
+            tn = document.createTextNode( str );
+
+            if( op.firstChild ){
+                op.replaceChild(tn,op.firstChild);
+            } else {
+                op.appendChild(tn);
+            }
+        }
+        inputs[num].addEventListener('change',onchange, false);
+    })(i)
+}
+
+form.addEventListener('reset', function(e){
+    obj.style[Modernizr.prefixed('transform')] = 'none';
+},false);
+
+// Reset on esc
+window.addEventListener('keydown', function(e){
+    if(e.keyCode == 27){
+       form.reset();
+    }
+},false);
+</script>
+</body>
+</html>
