@@ -29,7 +29,7 @@
 
             <p class="clear disable" id="toggle">
                 <input type="checkbox" id="backface" name="backface" disabled>
-                <label for="backface" class="checkbox mono">backface-visibility:</label> <code id="bvp">hidden</code></label>
+                <label for="backface" class="checkbox mono">backface-visibility:</label><code id="bvp">hidden</code></label>
             </p>
         </fieldset>
 
@@ -228,26 +228,19 @@
         }
 
         togglebf = function(e){
-
             var i,
                 frontfaces = document.getElementsByTagName('figure'),
                 len = frontfaces.length,
                 bvp = document.getElementById('bvp'),
                 bvptext;
 
-            if( e.target.checked == true ){
-                for(i = 0; i < len; i++){
-                    frontfaces[i].classList.add('bf');
-                }
-                bvptext = document.createTextNode('visible');
-                bvp.replaceChild(bvptext,bvp.childNodes[0]);
-            } else {
-                for(i = 0; i < len; i++){
-                   frontfaces[i].classList.remove('bf');
-                }
-                bvptext = document.createTextNode('hidden');
-                bvp.replaceChild(bvptext,bvp.childNodes[0]);
+            for(i = 0; i < len; i++){
+                frontfaces[i].classList.toggle('bf');
             }
+
+            bvp.innerHTML == 'hidden' ? bvptext = 'visible' : bvptext = 'hidden';
+            bvp.replaceChild( document.createTextNode(bvptext), bvp.firstChild);
+
         }
 
         twodhandler = function(){

@@ -9,7 +9,6 @@ header,
 footer,
 nav{display: block;}
 
-
 h1{margin: 0 1rem 0 1rem}
 
 header{
@@ -45,16 +44,6 @@ article,footer{
 article{
     padding-top: 3rem;
 }
-
-/* #demo{
-    position:absolute;
-    right:0;
-    top:4rem;
-    width:69%;
-    padding-top: 3rem;
-    z-index:1;
-    height:100%;
-} */
 
 /* -- Cube & Perspective controls ---*/
 #controlwrap > p{margin: 1rem;}

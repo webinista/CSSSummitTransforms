@@ -20,6 +20,11 @@ cube styles
       -ms-transform-style: preserve-3d;
        -o-transform-style: preserve-3d;
           transform-style: preserve-3d;
+    -webkit-perspective: 500px;
+       -moz-perspective: 500px;
+        -ms-perspective: 500px;
+         -o-perspective: 500px;
+            perspective: 500px;
 }
 
 figure{margin: 0;}
@@ -36,7 +41,7 @@ figure{margin: 0;}
   color: white;
   text-align: center;
 
- -webkit-backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
     -moz-backface-visibility: hidden;
      -ms-backface-visibility: hidden;
       -o-backface-visibility: hidden;
