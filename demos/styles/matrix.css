@@ -1,0 +1,27 @@
+input[type=text]{text-align:right;}
+#object{
+    border:2px solid #333;
+    width: 250px;
+    height: 250px;
+    background: hsla(315, 100%, 40%, .7);
+    color:#fff;
+    -webkit-transition: -webkit-transform 500ms linear;
+         -o-transition: -o-transform 500ms linear;
+        -ms-transition: -ms-transform 500ms linear;
+       -moz-transition: -moz-transform 500ms linear;
+}
+
+header{
+    font-size:.5rem;
+    padding:.5rem;
+    top:0;
+    background: #909;
+    width: 100%;
+    z-index:100;
+    height:1.5rem;
+    color:#F4F4F4;
+}
+header h1{margin:0 0 0 0;font-size:1rem;}
+article h1{font-size:2rem;margin:1rem 0 0 0}
+
+p{margin:0 0 0 0;}

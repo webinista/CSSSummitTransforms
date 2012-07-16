@@ -1,0 +1,28 @@
+#podemowrap{
+ -webkit-perspective: 800px;
+      -o-perspective: 800px;
+    -moz-perspective: 800px;
+     -ms-perspective: 800px;
+}
+
+#perspdemowrap{
+ -webkit-perspective: 0px;
+      -o-perspective: 0px;
+    -moz-perspective: 0px;
+     -ms-perspective: 0px;
+}
+
+#podemo, #perspectivedemo{
+    width: 250px;
+    height: 250px;
+    background: hsl(210, 100%, 50%);
+    margin: 0 auto 2rem auto;
+}
+#podemo.rotate{
+    -webkit-transform: rotate3d(0,150,0,60deg);
+         -o-transform: rotate3d(0,150,0,45deg);
+       -moz-transform: rotate3d(0,150,0,60deg);
+        -ms-transform: rotate3d(0,150,0,45deg);
+            transform: rotate3d(0,150,0,45deg);
+}
+#podemo{border-left:5px solid #c09;}

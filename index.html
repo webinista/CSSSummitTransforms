@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="themes/ribbon/styles/style.css">
 	<link rel="stylesheet" href="demos/styles/transformorigin.css">
 	<link rel="stylesheet" href="demos/styles/transformsinaction.css">
+	<link rel="stylesheet" href="demos/styles/perspectiveorigin.css">
 	<!-- <link rel="stylesheet" href="cube.css"> -->
 	  <!--
 		To apply styles to the certain slides
@@ -81,23 +82,6 @@
             -o-transition: -o-transform 500ms linear 250ms;
         }
 
-        .full .fancy{
-            /* Opera still needs a prefix. Other browsers do not.*/
-                 -o-transform: skew(45deg) scale(.5) rotate(-45deg);
-            -webkit-transform: skew(45deg) scale(.5) rotate(-45deg);
-               -moz-transform: skew(45deg) scale(.5) rotate(-45deg);
-                -ms-transform: skew(45deg) scale(.5) rotate(-45deg);
-                    transform: skew(45deg) scale(.5) rotate(-45deg);
-
-
-                 -o-transition: -o-transform 1s linear 500ms;
-            -webkit-transition: -webkit-transform 1s linear 500ms;
-               -moz-transition: -moz-transform 1s linear 500ms;
-                -ms-transition: -ms-transform 1s linear 500ms;
-                    transition:  transform 1s linear 500ms;
-
-        }
-
         svg{display:block; margin:auto;}
 
         .right{text-align:right;}
@@ -137,6 +121,7 @@
         }
         .box img{width:100%;margin:0}
         form{text-align:center}
+        input[type=number]{ text-align:right; font-size:inherit; width:8rem}
 	</style>
 </head>
 <body class="list">
@@ -173,7 +158,7 @@
     <div class="slide shout" id="Use_Prefixes"><div>
 		<section>
 			<header>
-				<h2>Some browsers still require a prefix<br>
+				<h2>Prefixes still required<br>
 				<span style="font-size:.5em">-o-, -ms-, -moz-, -webkit-</span></h2>
 			</header>
 		</section>
@@ -265,6 +250,46 @@
             <p class="right"><button type="button" id="transformtrigger">Rotate</button></p>
   		</section>
 	</div></div>
+
+
+    <div class="slide" id="Perspective_Origin"><div>
+		<section>
+			<header>
+				<h2><code>perspective-origin</code> property</h2>
+			</header>
+
+			<p>Sets a horizon point at the given coordinates <em>on the parent element</em>. Changes the perceived vantage point at which the user appears to be looking at child elements.</p>
+
+            <ul>
+	            <li>Keyword positions: <code>left</code>, <code>right</code>, <code>bottom</code>, <code>top</code>, <code>center</code></li>
+	            <li>Percentage values</li>
+	            <li>Length values</li>
+	        </ul>
+
+		</section>
+	</div></div>
+
+
+	<div class="slide" id="PerspectiveOrigin"><div>
+		<section>
+			<header>
+				<h2><code>perspective-origin: x y</code></h2>
+			</header>
+            <div id="podemowrap">
+                <div id="podemo" class="rotate"></div>
+                <form id="poform">
+                   <p>
+                    <label for="po[x]">x:</label>
+                    <input type="number" id="po[x]" name="po[x]" value="0">px
+                    <label for="po[y]">y</label>
+                    <input type="number" id="po[y]" name="po[y]" value="0">px
+                    <button type="reset">Reset</button>
+                  </p>
+                </form>
+            </div>
+        </section>
+    </div></div>
+
 
     <div class="slide" id="TransformProperty"><div>
 		<section>
@@ -392,7 +417,13 @@
 		</section>
 	</div></div>
 
-
+    <div class="slide shout" id="Use_Functions"><div>
+		<section>
+			<header>
+            <h2>Use transform functions instead</h2>
+			</header>
+		</section>
+	</div></div>
 
     <div class="slide" id="2DTransformFunctions"><div>
 		<section>
@@ -422,7 +453,7 @@
 			</header>
             <div id="twoDtransformObj" class="stdemo"></div>
             <form id="twoDtransforms">
-                <p>Toggle: <button type="button" id="rotate">rotate</button>
+                <p><button type="button" id="rotate">rotate</button>
                 <button type="button" id="skewX">skewX</button>
                 <button type="button" id="skewY">skewY</button>
                 <button type="button" id="scale">scale</button>
@@ -456,8 +487,6 @@
 		</section>
 	</div></div>
 
-
-
 	<div class="slide" id="ThreeDTransformExamples"><div>
 		<section>
 			<header>
@@ -465,7 +494,7 @@
 			</header>
 			<div id="threeDtransformObj" class="stdemo"></div>
             <form id="threeDtransforms">
-                <p>Toggle: <button type="button" id="rotate3d">rotate3d</button>
+                <p><button type="button" id="rotate3d">rotate3d</button>
                 <button type="button" id="scale3d">scale3d</button>
                 <button type="button" id="translate3d">translate3d</button>
                 <button type="button" id="perspective">perspective</button>
@@ -473,6 +502,10 @@
             </form>
 		</section>
 	</div></div>
+
+
+
+
 
 
 
@@ -509,59 +542,98 @@
 <!-- <div class="progress"><div></div></div> -->
 <script src="scripts/script.js"></script>
 <script src="scripts/modernizr.js"></script>
-
+<script src="demos/js.js"></script>
 <script>
-var transformorigin = document.getElementById('transformtrigger');
-var td = document.getElementById('twoDtransforms');
-var thd = document.getElementById('threeDtransforms');
+var transformorigin = document.getElementById('transformtrigger'),
+    td = document.getElementById('twoDtransforms'),
+    thd = document.getElementById('threeDtransforms'),
+    pox = document.getElementById('po[x]'),
+    poy = document.getElementById('po[y]'),
+    /* functions */
+    tochange,
+    twodchange,
+    threedchange,
+    twodreset,
+    theedreset,
+    pchange;
 
-window.addEventListener('hashchange', function(e){
-    var wat = document.querySelector('#What_is_a_transform > div');
+tochange = function(e){
+    var demos = document.getElementsByClassName('transordemof'),
+        len = demos.length;
 
-    if( window.location.search == '?full'){
+    for(var x=0; x < len; x++){
+        demos[x].classList.toggle('rotate');
+    }
+}
+transformorigin.addEventListener('click', tochange, false);
 
-        if(window.location.hash == '#What_is_a_transform'){
-            if( wat.classList.contains('fancy') ){
-                wat.classList.remove('fancy');
-            }
-        } else {
-            wat.classList.add('fancy');
-        }
-     }
-}, false);
+/* Two D Transforms demo */
+twodchange = function(e){
+    var twod = document.getElementById('twoDtransformObj'), remove, i;
 
-transformorigin.addEventListener('click', function(e){
-        var demos = document.getElementsByClassName('transordemof'),
-            len = demos.length;
-
-        for(var x=0; x < len; x++){
-            demos[x].classList.toggle('rotate');
-        }
-}, false);
-
-td.addEventListener('click', function(e){
    if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
-        document.getElementById('twoDtransformObj').classList.toggle(e.target.id);
-   }
-},false);
 
-td.addEventListener('reset', function(e){
+        console.log( twod.classList );
+
+        // Clear every class but stdemo
+        for( i = 1; i < twod.classList.length; i++){
+            remove = twod.classList.item(i);
+            twod.classList.remove(remove);
+        }
+
+        twod.classList.toggle(e.target.id);
+
+   }
+}
+twodreset = function(e){
    var twoDObj = document.getElementById('twoDtransformObj')
    var notstdemo = twoDObj.classList.item(1);
    twoDObj.classList.remove(notstdemo);
-},false);
+}
+td.addEventListener('click',twodchange,false);
+td.addEventListener('reset',twodreset,false);
 
-thd.addEventListener('click', function(e){
+
+threedchange = function(e){
+   var threeDObj, remove,i ;
+
    if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
-        document.getElementById('threeDtransformObj').classList.toggle(e.target.id);
-   }
-},false);
 
-thd.addEventListener('reset', function(e){
-   var threeDObj = document.getElementById('threeDtransformObj')
-   var notstdemo = threeDObj.classList.item(1);
+        threeDObj = document.getElementById('threeDtransformObj');
+
+        // Clear every class but stdemo
+        for( i = 1; i < threeDObj.classList.length; i++){
+            remove = threeDObj.classList.item(i);
+            threeDObj.classList.remove(remove);
+        }
+        threeDObj.classList.toggle(e.target.id);
+
+   }
+}
+
+thd.addEventListener('click', threedchange,false);
+
+threedreset = function(e){
+   var notstdemo, threeDObj = document.getElementById('threeDtransformObj');
+
+   for( var i = 1; i < threeDObj.classList.length; i++){
+        var remove = threeDObj.classList.item(i);
+   }
+
+   notstdemo = threeDObj.classList.item(1);
    threeDObj.classList.remove(notstdemo);
-},false);
+}
+
+thd.addEventListener('reset',threedreset,false);
+
+/* Perspective Origin Demo*/
+pchange = function(e){
+    var pod = document.getElementById('podemowrap'), x = pox, y = poy;
+    pod.style[Modernizr.prefixed('perspectiveOrigin')] = Lib.sprintf('%0px %1px',[x.value,y.value]);
+}
+pox.addEventListener('change', pchange, false);
+poy.addEventListener('change', pchange, false);
+
 
 </script>
 <!-- Shower presentation software, Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->

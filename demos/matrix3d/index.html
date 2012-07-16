@@ -5,28 +5,16 @@
 	<meta name="viewport" content="width=device-width,user-scalable=yes">
 	<title>3D Matrix Transform Function Demo</title>
 	<link rel="stylesheet" href="../styles/s.css" media="screen">
-	<style media="screen">
-	input[type=text]{text-align:right;}
-    #object{
-        border:2px solid #333;
-        width: 250px;
-        height: 250px;
-        background: hsla(315, 100%, 40%, .7);
-        color:#fff;
-    }
-    header{
-        width:60rem;
-    }
-    h1{margin:1rem 0 0 0;}
-    p{margin:0 0 0 0;}
-	</style>
+	<link rel="stylesheet" href="../styles/matrix.css" media="screen">
 </head>
 <body>
-	<header>
-	    <h1>3D Matrix Transform Function Demo</h1>
-	    <p>Adjust the values below to see the effect on the object. Use the Reset button or <kbd>esc</kbd> key to reset the form and the object.</p>
+    <header>
+        <h1>CSS Transforms</h1>
 	</header>
+
 	<article>
+	<h1>3D Matrix Transform Function Demo</h1>
+	    <p>Adjust the values below to see the effect on the object. Use the Reset button or <kbd>esc</kbd> key to reset the form and the object.</p>
 	     <form id="matrix">
             <p class="center">
             transform: <output id="result" class="center">matrix3d(1,0,0,0,0,1,0,0,0,0,1,0,0,0,0,1)</output>
@@ -62,7 +50,11 @@
 	<aside></aside>
 	<footer></footer>
 <script src="../../scripts/modernizr.js"></script>
+<script src="../js.js"></script>
+
+
 <script type="text/javascript">
+
 var inputs = document.querySelectorAll('input[type=text]'),
     ilen   = inputs.length;
     obj    = document.getElementById('object'),

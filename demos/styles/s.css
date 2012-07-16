@@ -18,9 +18,17 @@ label,form p{font-family:monospace}
 form p{
     margin:1rem;
 }
+
 button{
-    font: 1.2rem / 1.5 helvetica,'liberation sans',arial;
-    background: hsl(202, 100%, 50%);
-    border:1px solid hsl(202, 100%, 50%);
+    background:#30f;
+    border:1px solid #30f;
     color:#fff;
+    font: 1rem / 1.2 helvetica,'liberation sans',arial;
+}
+
+input[type=text]{border: 1px solid #bbb}
+
+input:focus{
+    outline:none;
+    background: hsl(68, 100%, 50%);
 }

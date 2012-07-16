@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Transforms Playground</title>
+	<style media="screen">
+    body {
+      font: 18px / 1.5 'Helvetica Neue',helvetica, Arial, sans-serif;
+      color: #232;
+      margin:0;
+   }
+
+    section,
+    header,
+    footer,
+    nav{display: block;}
+
+    h1{margin: 0 1rem 0 1rem}
+
+    header{
+        font-size:.5rem;
+        padding:.5rem;
+        position:fixed;
+        top:0;
+        background: #909;
+        width: 100%;
+        z-index:100;
+        height:1.5rem;
+        color:#F4F4F4;
+    }
+    header h1{margin:0;}
+
+    #controlwrap{
+        width: 30%;
+        background:#eee;
+        position:relative;
+        top: 4rem;
+        padding: .8rem 0 1rem 0;
+        margin-bottom: 1rem;
+        z-index:1;
+    }
+
+    #demo{
+        position:absolute;
+        right:0;
+        top:4rem;
+        width:69%;
+        padding-top: 3rem;
+        z-index:1;
+        height:100%;
+    }
+
+    /* -- controls ---*/
+    #controlwrap > p{margin: 1rem;}
+
+    #controls{margin: 1rem;}
+
+    #controls p{margin:0;}
+
+    label.checkbox{cursor: pointer;}
+    label.text{display:block;}
+
+    .mono,code{font-family: monospace; font-size:.99rem; font-weight:bold}
+
+    input[type=text]{font-size:inherit;}
+
+    .txtright{text-align:right;}
+
+    .clear{clear:both;}
+
+    button{
+        background:#30f;
+        border:1px solid #30f;
+        color:#fff;
+        font:inherit;
+    }
+
+    #numsides p{float:left; width:32%;}
+
+    #t2d p, #t3d p{
+        float:left;
+        margin-right:1rem;
+    }
+
+    #t2d p:last-child,
+    #t3d p:last-child{margin-right:0}
+
+    #t3d fieldset{float:left;}
+
+    #rotate3d,
+    #scale3d,
+    #translate3d,
+    #translate,
+    #perspv,
+    #perspective{
+        padding:0;
+        border:0;
+        margin: 1rem 0
+    }
+
+    #translate legend{padding-top:1rem;}
+
+    fieldset,
+    #numsides{
+        background:#fff;
+        border: 0;
+    }
+
+    fieldset fieldset{
+        padding:0;
+        width:100%;
+    }
+
+    legend,
+    #numsides label{font-weight:bold;}
+
+    #numsides{padding: .5rem;}
+
+    #numsides > legend,
+    #t2d > legend,
+    #t3d > legend{
+        display:block;
+        padding-top: 2rem;
+    }
+
+    #ft{
+        font-size: .8rem;
+        margin: 0 1rem;
+        line-height: .8;
+    }
+
+    #toggle{width:100%;}
+
+    #t2d{
+        min-height: 13rem;
+        max-height: 20rem;
+        height: auto;
+        overflow: hidden;
+
+        -webkit-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+           -moz-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+            -ms-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+             -o-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+                transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+    }
+
+    #t3d{
+        min-height: 30rem;
+        max-height: 40rem;
+        height:auto;
+        overflow:hidden;
+
+        -webkit-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+           -moz-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+            -ms-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+             -o-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+                transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+    }
+
+
+    #t2d.close, #t3d.close{
+        min-height:3rem;
+        max-height:3rem;
+        height: 3rem;
+        overflow:hidden;
+
+        -webkit-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+           -moz-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+            -ms-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+             -o-transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+                transition: max-height 1s ease-in-out, min-height 500ms ease-in-out;
+    }
+
+    #t2d.close > p,
+    #t3d.close > p,
+    #t2d.close > fieldset,
+    #t3d.close > fieldset{visibility: hidden;}
+
+    .trigger{cursor:pointer;}
+
+    .disable{
+        color:#999;
+    }
+    /*-----------------
+    cube styles
+    -----------------*/
+
+    .container{
+      width: 200px;
+      height: 200px;
+      position: fixed;
+      top:10rem;
+      left: 58%;
+      z-index:99;
+    }
+
+    #cube{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      -webkit-transform-style: preserve-3d;
+         -moz-transform-style: preserve-3d;
+          -ms-transform-style: preserve-3d;
+           -o-transform-style: preserve-3d;
+              transform-style: preserve-3d;
+    }
+
+    figure{margin: 0;}
+
+    #cube figure{
+      display: block;
+      position: absolute;
+      width: 196px;
+      height: 196px;
+      border: 1px solid #333;
+      line-height: 196px;
+      font-size: 120px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+
+     -webkit-backface-visibility: hidden;
+        -moz-backface-visibility: hidden;
+         -ms-backface-visibility: hidden;
+          -o-backface-visibility: hidden;
+             backface-visibility: hidden;
+
+    }
+
+    #cube,
+    #cube figure {
+      -webkit-transition: -webkit-transform 1s ease-in-out;
+         -moz-transition: -moz-transform 1s ease-in-out;
+          -ms-transition: -ms-transform 1s ease-in-out;
+           -o-transition: -o-transform 1s ease-in-out;
+              transition: transform 1s ease-in-out;
+    }
+
+    #cube .front{background: hsla(248, 100%, 50%, .5);}
+    #cube .back{background: hsla(315, 100%, 40%, .5);}
+    #cube .right{background: hsla( 48, 100%, 50%, .5);}
+    #cube .left{background: hsla(125, 100%, 40%, .5);}
+    #cube .top{background: hsla( 24, 100%, 50%, .5);}
+    #cube .bottom{background: hsla(187,  87%, 50%, .5);}
+
+    #cube .front {
+      -webkit-transform: rotateY(   0deg ) translateZ( 100px );
+         -moz-transform: rotateY(   0deg ) translateZ( 100px );
+          -ms-transform: rotateY(   0deg ) translateZ( 100px );
+           -o-transform: rotateY(   0deg ) translateZ( 100px );
+              transform: rotateY(   0deg ) translateZ( 100px );
+    }
+
+    #cube .back {
+      -webkit-transform: rotateX( 180deg ) translateZ( 100px );
+         -moz-transform: rotateX( 180deg ) translateZ( 100px );
+          -ms-transform: rotateX( 180deg ) translateZ( 100px );
+           -o-transform: rotateX( 180deg ) translateZ( 100px );
+              transform: rotateX( 180deg ) translateZ( 100px );
+    }
+
+    #cube .right {
+      -webkit-transform: rotateY(  90deg ) translateZ( 100px );
+         -moz-transform: rotateY(  90deg ) translateZ( 100px );
+          -ms-transform: rotateY(  90deg ) translateZ( 100px );
+           -o-transform: rotateY(  90deg ) translateZ( 100px );
+              transform: rotateY(  90deg ) translateZ( 100px );
+    }
+
+    #cube .left {
+      -webkit-transform: rotateY( -90deg ) translateZ( 100px );
+         -moz-transform: rotateY( -90deg ) translateZ( 100px );
+          -ms-transform: rotateY( -90deg ) translateZ( 100px );
+           -o-transform: rotateY( -90deg ) translateZ( 100px );
+              transform: rotateY( -90deg ) translateZ( 100px );
+    }
+
+    #cube .top {
+      -webkit-transform: rotateX(  90deg ) translateZ( 100px );
+         -moz-transform: rotateX(  90deg ) translateZ( 100px );
+          -ms-transform: rotateX(  90deg ) translateZ( 100px );
+           -o-transform: rotateX(  90deg ) translateZ( 100px );
+              transform: rotateX(  90deg ) translateZ( 100px );
+    }
+
+    #cube .bottom {
+      -webkit-transform: rotateX( -90deg ) translateZ( 100px );
+         -moz-transform: rotateX( -90deg ) translateZ( 100px );
+          -ms-transform: rotateX( -90deg ) translateZ( 100px );
+           -o-transform: rotateX( -90deg ) translateZ( 100px );
+              transform: rotateX( -90deg ) translateZ( 100px );
+    }
+
+    #cube .bf{
+        -webkit-backface-visibility: visible;
+           -moz-backface-visibility: visible;
+            -ms-backface-visibility: visible;
+             -o-backface-visibility: visible;
+                backface-visibility: visible;
+    }
+
+    #cube .hide{display: none;}
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Transforms</h1>
+</header>
+
+<section id="controlwrap">
+    <h1>Change values below</h1>
+    <form id="controls">
+
+       <fieldset>
+            <p id="numsides">
+                <label for="sides"># of sides</label>
+                <select id="sides" name="sides">
+                    <option value="1" selected>1 (square)</option>
+                    <option value="6">6 (cube)</option>
+                </select>
+            </p>
+
+            <p class="clear disable" id="toggle">
+                <input type="checkbox" id="backface" name="backface" disabled>
+                <label for="backface" class="checkbox mono">backface-visibility:</label> <code id="bvp">hidden</code></label>
+            </p>
+        </fieldset>
+
+        <fieldset id="t2d">
+          <legend class="trigger">2D Transforms</legend>
+            <p>
+                <label for="rotate" class="text mono">rotate</label>
+                <input type="text" id="rotate" name="rotate" value="0" size="4" maxlength="5" class="txtright">&deg;
+            </p>
+
+            <p>
+                <label for="skew" class="text mono">skew</label>
+                <input type="text" id="skew" name="skew" value="0" size="4" maxlength="5" class="txtright">&deg;
+            </p>
+
+            <p>
+                <label for="scale" class="text mono">scale</label>
+                <input type="text" id="scale" name="scale" value="1" size="4" maxlength="5" class="txtright">
+            </p>
+
+            <fieldset id="translate">
+                <legend class="mono unbold">translate</legend>
+                <p>
+                    <label for="translatex">x</label>
+                    <input type="text" id="translatex" name="scale" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+                <p>
+                    <label for="translatey">y</label>
+                    <input type="text" id="translatey" name="scale" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+            </fieldset>
+        </fieldset>
+
+        <fieldset id="t3d">
+          <legend class="trigger">3D Transforms</legend>
+           <fieldset id="perspv">
+               <p>
+                    <label for="per" class="text mono">perspective</label>
+                    <input type="text" id="per" name="per" value="0" size="4" maxlength="5" class="txtright">px
+               </p>
+
+
+            </fieldset>
+
+          <fieldset id="rotate3d">
+                <legend class="mono">rotate3d</legend>
+                <p>
+                    <label for="rx" class="text">x-vector</label>
+                    <input type="text" id="rx" name="rx" value="0" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="ry" class="text">y-vector</label>
+                    <input type="text" id="ry" name="ry" value="0" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="rz" class="text">z-vector</label>
+                    <input type="text" id="rz" name="rz" value="0" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="ra" class="text">angle</label>
+                    <input type="text" id="ra" name="ra" value="0" size="4" maxlength="5" class="txtright">&deg;
+                </p>
+           </fieldset>
+
+           <fieldset id="translate3d">
+                <legend class="mono">translate3d</legend>
+                <p>
+                    <label for="tx" class="text">x-vector</label>
+                    <input type="text" id="tx" name="tx" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+                <p>
+                    <label for="ty" class="text">y-vector</label>
+                    <input type="text" id="ty" name="ty" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+                <p>
+                    <label for="tz" class="text">z-vector</label>
+                    <input type="text" id="tz" name="tz" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+           </fieldset>
+
+           <fieldset id="scale3d">
+                <legend class="mono">scale3d</legend>
+                <p>
+                    <label for="sx" class="text">x-vector</label>
+                    <input type="text" id="sx" name="sx" value="1" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="sy" class="text">y-vector</label>
+                    <input type="text" id="sy" name="sy" value="1" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="sz" class="text">z-vector</label>
+                    <input type="text" id="sz" name="sz" value="1" size="4" maxlength="5" class="txtright">
+                </p>
+           </fieldset>
+
+
+        </fieldset>
+        <p>
+            <button type="reset">Reset</button>
+            <button type="button" id="getcss">Get Transform CSS</button>
+        </p>
+    </form>
+
+    <div id="ft">
+        <p><a href="http://www.w3.org/TR/css3-transforms/">CSS3 Transforms Specification</a>.</p>
+        <p>Thanks to <b>David DeSandro</b> for his <a href="http://desandro.github.com/3dtransforms/">cube code</a>.</p>
+    </div>
+</section>
+
+<section id="demo">
+    <section id="ctn" class="container">
+      <div id="cube">
+        <figure class="front">1</figure>
+        <figure class="back hide">2</figure>
+        <figure class="right hide">3</figure>
+        <figure class="left hide">4</figure>
+        <figure class="top hide">5</figure>
+        <figure class="bottom hide">6</figure>
+      </div>
+    </section>
+</section>
+
+<script src="../../scripts/modernizr.js"></script>
+<script src="../js.js"></script>
+
+<script>
+(function(){
+    var init = function(){
+        var sides = document.getElementById('sides'),
+            sideshandler, togglebf, twodhandler,
+            persphandler, r3dhandler, t3dhandler,
+            s3dhandler, resetform,
+            trigger = document.getElementsByClassName('trigger'),
+            faces = document.getElementsByTagName('figure'),
+            bf = document.getElementById('backface'),
+            ct = document.getElementById('ctn'),
+            cb = document.getElementById('cube'),
+            rotate = document.getElementById('rotate'),
+            skew = document.getElementById('skew'),
+            scale = document.getElementById('scale'),
+            transx = document.getElementById('translatex'),
+            transy = document.getElementById('translatey'),
+            form = document.getElementById('controls'),
+            mtfm = Modernizr.prefixed('transform'),
+            per = document.getElementById('per'),
+            rx = document.getElementById('rx'),
+            ry = document.getElementById('ry'),
+            rz = document.getElementById('rz'),
+            ra = document.getElementById('ra'),
+            tx = document.getElementById('tx'),
+            ty = document.getElementById('ty'),
+            tz = document.getElementById('tz'),
+            sx = document.getElementById('sx'),
+            sy = document.getElementById('sy'),
+            sz = document.getElementById('sz'),
+            curtrans = '';
+            ctcurtrans = ''
+
+        sideshandler = function(e){
+            var figs = document.getElementsByTagName('figure'),
+                len  = figs.length,
+                i, backface = bf, psv = per,
+                evt, pevt;
+            /* Hide everything except the first one*/
+            for(i = 1; i < len; i++){
+                figs[i].classList.add('hide');
+            }
+            for(i = 1; i < e.target.value; i++){
+                figs[i].classList.remove('hide');
+            }
+
+            if( e.target.value > 1 ){
+
+                backface.disabled = false;
+                backface.checked = true;
+
+                evt = document.createEvent('Event');
+                evt.initEvent('change',false,true);
+                backface.dispatchEvent(evt);
+
+                psv.value = 500;
+                psv.dispatchEvent(evt);
+
+                Lib.addclass(document.getElementById('t2d'),'close');
+                Lib.removeclass(document.getElementById('t3d'),'close');
+                Lib.removeclass(document.getElementById('toggle'),'disable');
+
+            } else {
+                 backface.disabled = true;
+
+                 Lib.addclass(document.getElementById('toggle'),'disable');
+                 document.getElementById('t2d').classList.remove('close');
+                 document.getElementById('t3d').classList.add('close');
+            }
+        }
+
+        togglebf = function(e){
+
+            var i,
+                frontfaces = document.getElementsByTagName('figure'),
+                len = frontfaces.length,
+                bvp = document.getElementById('bvp'),
+                bvptext;
+
+            if( e.target.checked == true ){
+                for(i = 0; i < len; i++){
+                    frontfaces[i].classList.add('bf');
+                }
+                bvptext = document.createTextNode('visible');
+                bvp.replaceChild(bvptext,bvp.childNodes[0]);
+            } else {
+                for(i = 0; i < len; i++){
+                   frontfaces[i].classList.remove('bf');
+                }
+                bvptext = document.createTextNode('hidden');
+                bvp.replaceChild(bvptext,bvp.childNodes[0]);
+            }
+        }
+
+        twodhandler = function(){
+           var cub = cb,
+               r = rotate,
+               sk = skew,
+               sc = scale,
+               t2x = transx,
+               t2y = transy,
+               str = 'rotate('+r.value+'deg) skew('+sk.value+'deg) scale('+sc.value+') translate('+transx.value+'px,'+transy.value+'px)';
+
+            curtrans = cb.style[mtfm] = str;
+
+        }
+
+        persphandler = function(){
+            var c = ct, p = per.value, b = cb;
+            ctcurtrans = c.style[ Modernizr.prefixed('perspective') ] = p+'px';
+        }
+
+        r3dhandler = function(){
+            var x = rx.value,
+                y = ry.value,
+                z = rz.value,
+                a = ra.value,
+                c = cb;
+
+            /* Remove existing rotate function. */
+            if( c.style[mtfm].indexOf('rotate3d(') > -1 ){
+                c.style[mtfm] = c.style[mtfm].replace(/rotate3d\((-|)[0-9]{1,}, (-|)[0-9]{1,}, (-|)[0-9]{1,}, (-|)[0-9]{1,}deg\)/g,'');
+            }
+            c.style[mtfm] += ' rotate3d('+x+','+y+','+z+','+a+'deg)';
+
+            curtrans = c.style[mtfm];
+        }
+
+
+        t3dhandler = function(){
+            var x = tx.value,
+                y = ty.value,
+                z = tz.value,
+                c = cb;
+
+            /* Remove existing translate function. */
+            if( c.style[mtfm].indexOf('translate3d(') > -1 ){
+                c.style[mtfm] = c.style[mtfm].replace(/translate3d\((-|)[0-9]{1,}px, (-|)[0-9]{1,}px, (-|)[0-9]{1,}px\)/g,'');
+            }
+            c.style[mtfm] += ' translate3d('+x+'px,'+y+'px,'+z+'px)';
+
+            curtrans = c.style[mtfm]
+        }
+
+        s3dhandler = function(){
+            var x = sx.value,
+                y = sy.value,
+                z = sz.value,
+                c = cb;
+
+            /* Remove existing scale function. */
+            if( c.style[mtfm].indexOf('scale3d(') > -1 ){
+                c.style[mtfm] = c.style[mtfm].replace(/scale3d\((-|)[\.0-9]{1,}, (-|)[\.0-9]{1,}, (-|)[\.0-9]{1,}\)/g,'');
+            }
+
+            c.style[mtfm] += ' scale3d('+x+', '+y+', '+z+')';
+
+            curtrans = c.style[mtfm];
+        }
+
+        resethandler = function(e){
+
+            /* Reset cube upon form reset */
+            cb.style.cssText = '';
+            ct.style.cssText = '';
+
+            cb.removeAttribute('style');
+            ct.removeAttribute('style');
+
+            /* Hide panels 2 - 6 */
+            figs = document.getElementsByTagName('figure'),
+            len = figs.length;
+
+            for(i = 1; i < len; i++){
+                figs[i].classList.add('hide');
+            }
+
+            bf.disabled = true;
+            Lib.addclass(document.getElementById('toggle'),'disable');
+
+        }
+
+        /*----- Add event listeners ----*/
+
+        /* Prevent form submission */
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+        }, false);
+
+        form.addEventListener('reset',resethandler, false);
+
+        /* Reset form when the escape key is hit */
+        Lib.escapetoreset(form);
+
+        /* Trigger change event when enter/return key is hit (for Opera) */
+        Lib.changeonenter();
+
+        bf.addEventListener('change',togglebf,false);
+        sides.addEventListener('change',sideshandler,false);
+
+        rotate.addEventListener('change',twodhandler,false);
+        skew.addEventListener('change',twodhandler,false);
+        scale.addEventListener('change',twodhandler,false);
+        transx.addEventListener('change',twodhandler,false);
+        transy.addEventListener('change',twodhandler,false);
+
+        per.addEventListener('change',persphandler,false);
+
+        rx.addEventListener('change',r3dhandler,false);
+        ry.addEventListener('change',r3dhandler,false);
+        rz.addEventListener('change',r3dhandler,false);
+        ra.addEventListener('change',r3dhandler,false);
+
+        tx.addEventListener('change',t3dhandler,false);
+        ty.addEventListener('change',t3dhandler,false);
+        tz.addEventListener('change',t3dhandler,false);
+
+        sx.addEventListener('change',s3dhandler,false);
+        sy.addEventListener('change',s3dhandler,false);
+        sz.addEventListener('change',s3dhandler,false);
+
+        for( var i = 0; i < trigger.length; i++){
+            trigger[i].addEventListener('click', function(e){
+                e.target.parentNode.classList.toggle('close');
+            }, false);
+        }
+
+        var getcss = document.getElementById('getcss');
+
+        getcss.addEventListener('click', function(){
+
+            alert( ctcurtrans );
+            alert( curtrans );
+
+        },false);
+    }
+    window.addEventListener('DOMContentLoaded',init,false);
+
+})();
+
+
+
+</script>
+</body>
+</html>
