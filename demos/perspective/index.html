@@ -37,7 +37,7 @@
        <fieldset>
 
             <p class="clear" id="toggle">
-                <input type="checkbox" id="backface" name="backface">
+                <input type="checkbox" id="backface" name="backface" checked>
                 <label for="backface" class="checkbox mono">backface-visibility:</label><code id="bvp">visible</code></label>
             </p>
         </fieldset>
@@ -107,8 +107,6 @@
             perorx = document.getElementById('perorx'),
             perory = document.getElementById('perory'),
 
-
-
         togglebf = function(e){
             var i,
                 frontfaces = document.getElementsByTagName('figure'),
@@ -120,9 +118,8 @@
                 frontfaces[i].classList.toggle('bf');
             }
 
-            bvp.innerHTML == 'hidden' ? bvptext = 'visible' : bvptext = 'hidden';
+            e.target.checked === true ? bvptext = 'visible' : bvptext = 'hidden';
             bvp.replaceChild( document.createTextNode(bvptext), bvp.firstChild);
-
         },
 
         persphandler = function(){
@@ -148,24 +145,19 @@
         }
 
         resethandler = function(e){
+            var resetbf;
 
-            /* Reset cube upon form reset */
-            cb.style.cssText = '';
+            /* Reset cube and container upon form reset */
             ct.style.cssText = '';
 
             cb.removeAttribute('style');
             ct.removeAttribute('style');
 
-            /* Hide panels 2 - 6 */
-            figs = document.getElementsByTagName('figure'),
-            len = figs.length;
-
-            for(i = 1; i < len; i++){
-                figs[i].classList.add('hide');
-            }
-
-            bf.disabled = true;
-            Lib.addclass(document.getElementById('toggle'),'disable');
+            // Reset the back face setting
+            bf.checked = true;
+            resetbf = document.createEvent('Event');
+            resetbf.initEvent('change',false,false);
+            bf.dispatchEvent(resetbf);
         }
 
         /*----- Add event listeners ----*/
