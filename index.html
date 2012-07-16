@@ -218,8 +218,7 @@
 			<p>Specifies the x and y position of the origin, relative to the transform object.</p>
 	        <ul>
 	            <li>Keyword positions: <code>left</code>, <code>right</code>, <code>bottom</code>, <code>top</code>, <code>center</code></li>
-
-	            <li>Percentage values</li>
+	            <li>Percentage values (default = 50% 50%)</li>
 	            <li>Length values</li>
 	        </ul>
   		</section>
@@ -252,7 +251,7 @@
 	</div></div>
 
 
-    <div class="slide" id="Perspective_Origin"><div>
+    <div class="slide" id="Perspective_Origin_Property"><div>
 		<section>
 			<header>
 				<h2><code>perspective-origin</code> property</h2>
@@ -262,15 +261,14 @@
 
             <ul>
 	            <li>Keyword positions: <code>left</code>, <code>right</code>, <code>bottom</code>, <code>top</code>, <code>center</code></li>
-	            <li>Percentage values</li>
+	            <li>Percentage values (default = 50% 50%)</li>
 	            <li>Length values</li>
 	        </ul>
-
 		</section>
 	</div></div>
 
 
-	<div class="slide" id="PerspectiveOrigin"><div>
+	<div class="slide" id="Perspective_Origin"><div>
 		<section>
 			<header>
 				<h2><code>perspective-origin: x y</code></h2>
@@ -290,6 +288,13 @@
         </section>
     </div></div>
 
+    <div class="slide shout demo" id="PerspectiveDemo"><div>
+		<section>
+			<header>
+            <h2><a href="demos/perspective/" target="_blank">Perspective Demo</a></h2>
+			</header>
+		</section>
+	</div></div>
 
     <div class="slide" id="TransformProperty"><div>
 		<section>
@@ -549,13 +554,15 @@ var transformorigin = document.getElementById('transformtrigger'),
     thd = document.getElementById('threeDtransforms'),
     pox = document.getElementById('po[x]'),
     poy = document.getElementById('po[y]'),
+    poform = document.getElementById('poform'),
     /* functions */
     tochange,
     twodchange,
     threedchange,
     twodreset,
     theedreset,
-    pchange;
+    pchange,
+    poreset;
 
 tochange = function(e){
     var demos = document.getElementsByClassName('transordemof'),
@@ -631,9 +638,12 @@ pchange = function(e){
     var pod = document.getElementById('podemowrap'), x = pox, y = poy;
     pod.style[Modernizr.prefixed('perspectiveOrigin')] = Lib.sprintf('%0px %1px',[x.value,y.value]);
 }
+poreset = function(e){
+    document.getElementById('podemowrap').style[ Modernizr.prefixed('perspectiveOrigin') ] = '50% 50%';
+}
 pox.addEventListener('change', pchange, false);
 poy.addEventListener('change', pchange, false);
-
+poform.addEventListener('reset',poreset,false);
 
 </script>
 <!-- Shower presentation software, Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Perspective Playground</title>
+	<link rel="stylesheet" href="../styles/cube.css" media="screen">
+	<link rel="stylesheet" href="../styles/common.css" media="screen">
+	<style media="screen">
+	#t3d{
+	    min-height:9rem;
+	    max-height:13.5rem;
+	}
+	.trigger{cursor:default;}
+
+    br.clear{clear:both; margin:1rem}
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Transforms</h1>
+</header>
+
+<section id="controlwrap">
+    <h1>Perspective Origin &amp; Perspective </h1>
+    <p>Change values below.</p>
+    <form id="controls">
+
+       <fieldset>
+            <p id="numsides">
+                <label for="sides"># of sides</label>
+                <select id="sides" name="sides">
+                    <option value="1" selected>1 (square)</option>
+                    <option value="6">6 (cube)</option>
+                </select>
+            </p>
+
+            <p class="clear disable" id="toggle">
+                <input type="checkbox" id="backface" name="backface" disabled>
+                <label for="backface" class="checkbox mono">backface-visibility:</label> <code id="bvp">hidden</code></label>
+            </p>
+        </fieldset>
+
+
+        <fieldset id="t3d">
+          <legend class="trigger">Perspective</legend>
+           <fieldset id="perspv">
+
+                <p>
+                    <label for="per" class="text mono">perspective-origin</label>
+                    <input type="text" id="perorx" name="perorx" value="0" size="4" maxlength="5" class="txtright">px
+                    <input type="text" id="perory" name="perory" value="0" size="4" maxlength="5" class="txtright">px
+               </p>
+                <br class="clear">
+
+               <p>
+                    <label for="per" class="text mono">perspective</label>
+                    <input type="text" id="per" name="per" value="0" size="4" maxlength="5" class="txtright">px
+               </p>
+
+
+            </fieldset>
+
+
+        </fieldset>
+        <p>
+            <button type="reset">Reset</button>
+        </p>
+    </form>
+
+    <div id="ft">
+        <p><a href="http://www.w3.org/TR/css3-transforms/">CSS3 Transforms Specification</a>.</p>
+        <p>Thanks to <b>David DeSandro</b> for his <a href="http://desandro.github.com/3dtransforms/">cube code</a>.</p>
+    </div>
+</section>
+
+<section id="demo">
+    <section id="ctn" class="container">
+      <div id="cube">
+        <figure class="front">1</figure>
+        <figure class="back hide">2</figure>
+        <figure class="right hide">3</figure>
+        <figure class="left hide">4</figure>
+        <figure class="top hide">5</figure>
+        <figure class="bottom hide">6</figure>
+      </div>
+    </section>
+</section>
+
+<script src="../../scripts/modernizr.js"></script>
+<script src="../js.js"></script>
+
+<script type="text/javascript">
+(function(){
+    var init = function(){
+        var sides = document.getElementById('sides'),
+            sideshandler,
+            togglebf,
+            persphandler,
+            persporiginhandler,
+            faces = document.getElementsByTagName('figure'),
+            bf = document.getElementById('backface'),
+            ct = document.getElementById('ctn'),
+            cb = document.getElementById('cube'),
+            form = document.getElementById('controls'),
+            resetform,
+            per = document.getElementById('per'),
+            perorx = document.getElementById('perorx'),
+            perory = document.getElementById('perory'),
+
+        sideshandler = function(e){
+            var figs = document.getElementsByTagName('figure'),
+                len  = figs.length,
+                i, backface = bf, psv = per,
+                evt, pevt;
+            /* Hide everything except the first one*/
+            for(i = 1; i < len; i++){
+                figs[i].classList.add('hide');
+            }
+            for(i = 1; i < e.target.value; i++){
+                figs[i].classList.remove('hide');
+            }
+
+            if( e.target.value > 1 ){
+
+                backface.disabled = false;
+                backface.checked = true;
+
+                evt = document.createEvent('Event');
+                evt.initEvent('change',false,true);
+                backface.dispatchEvent(evt);
+
+                psv.value = 500;
+                psv.dispatchEvent(evt);
+
+                Lib.removeclass(document.getElementById('toggle'),'disable');
+
+            } else {
+                 backface.disabled = true;
+                 Lib.addclass(document.getElementById('toggle'),'disable');
+            }
+        },
+
+        togglebf = function(e){
+
+            var i,
+                frontfaces = document.getElementsByTagName('figure'),
+                len = frontfaces.length,
+                bvp = document.getElementById('bvp'),
+                bvptext;
+
+            if( e.target.checked == true ){
+                for(i = 0; i < len; i++){
+                    frontfaces[i].classList.add('bf');
+                }
+                bvptext = document.createTextNode('visible');
+                bvp.replaceChild(bvptext,bvp.childNodes[0]);
+            } else {
+                for(i = 0; i < len; i++){
+                   frontfaces[i].classList.remove('bf');
+                }
+                bvptext = document.createTextNode('hidden');
+                bvp.replaceChild(bvptext,bvp.childNodes[0]);
+            }
+        },
+
+        persphandler = function(){
+            var c = ct, p = per.value, b = cb;
+            ctcurtrans = c.style[ Modernizr.prefixed('perspective') ] = p+'px';
+        },
+
+        persporiginhandler = function(e){
+            var ct = ctn,
+                pox = perorx,
+                poy = perory,
+                psv = per,
+                changepersp = document.createEvent('Event');
+
+            ctn.style[ Modernizr.prefixed('perspectiveOrigin') ] = Lib.sprintf('%0px %1px',[pox.value,poy.value]);
+
+            if( per.value == 0 ){
+                per.value = 110;
+            }
+            changepersp.initEvent('change',false,true);
+            per.dispatchEvent(changepersp);
+
+        }
+
+        resethandler = function(e){
+
+            /* Reset cube upon form reset */
+            cb.style.cssText = '';
+            ct.style.cssText = '';
+
+            cb.removeAttribute('style');
+            ct.removeAttribute('style');
+
+            /* Hide panels 2 - 6 */
+            figs = document.getElementsByTagName('figure'),
+            len = figs.length;
+
+            for(i = 1; i < len; i++){
+                figs[i].classList.add('hide');
+            }
+
+            bf.disabled = true;
+            Lib.addclass(document.getElementById('toggle'),'disable');
+        }
+
+        /*----- Add event listeners ----*/
+
+        /* Prevent form submission */
+        form.addEventListener('submit',function(e){
+            e.preventDefault();
+        }, false);
+
+        form.addEventListener('reset',resethandler, false);
+
+        /* Reset form when the escape key is hit */
+        Lib.escapetoreset(form);
+
+        /* Trigger change event when enter/return key is hit (for Opera) */
+        Lib.changeonenter();
+
+        bf.addEventListener('change',togglebf,false);
+        sides.addEventListener('change',sideshandler,false);
+
+        per.addEventListener('change',persphandler,false);
+
+        /* Taking advantage of event delegation */
+        t3d.addEventListener('change',persporiginhandler,false);
+
+    }
+
+    window.addEventListener('DOMContentLoaded',init,false);
+
+})();
+
+
+
+</script>
+</body>
+</html>
