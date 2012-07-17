@@ -12,135 +12,13 @@
 	<link rel="stylesheet" href="demos/styles/backface-and-type.css">
 	<link rel="stylesheet" href="demos/styles/stackingcontext.css">
 	<link rel="stylesheet" href="demos/styles/containingblock.css">
+    <link rel="stylesheet" href="main.css">
 
 	  <!--
 		To apply styles to the certain slides
 		use slide ID to get needed elements
 		-->
 	<style>
-	    .slide section{
-	        position:relative;
-	    }
-	    .slide section:before{background:none;}
-	    .slide header{margin-bottom:2rem;}
-
-        /* .slide section:before{
-            background:none;
-        } */
-        .slide h2 a{text-decoration: none;}
-
-        .hidden{visibility: hidden;}
-
-	    #Cover section{
-	    	background-color: #c00;
-	    	background-image:     -o-linear-gradient(bottom, #b00,#f00);
-	        background-image:   -moz-linear-gradient(bottom, #b00,#f00);
-            background-image:    -ms-linear-gradient(bottom, #b00,#f00);
-            background-image:-webkit-linear-gradient(bottom, #b00,#f00);
-            background-image: linear-gradient(bottom, #b00,#f00);
-	    }
-	    #Cover h2, #Cover h3{
-	        color:#FFF;
-	        text-shadow: 1px 1px 3px #300;
-	    }
-		#Cover h2 {
-			font-size:70px;
-		}
-
-		#Cover h3 {
-			font-size:40px;
-			text-align:right;
-			margin-top: 70px;
-		}
-
-        .slide.warning section{
-           background-color: #fff;
-           background-image: -o-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
-                             -o-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
-           background-image: -moz-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
-                             -moz-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
-           background-image: -ms-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
-                             -ms-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
-           background-image: -webkit-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
-                             -webkit-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
-           background-image: repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
-                             repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
-           background-size: 100% 5rem;
-           background-repeat: repeat-x;
-           background-position: top, bottom;
-        }
-        .slide.warning section h2{color:#000}
-        .graphpaper{
-            background-image: url(images/graphpaper.svg);
-            background-position: center;
-        }
-        .demo.graphpaper{
-            width:100%;
-            min-height: 22rem;
-            border: 1px solid rgba(51,102,153,.5);
-            padding:0;
-            background-position:-1px -1px;
-        }
-        .center{display:block; margin:auto;}
-
-        #WhatAreTransforms > div{
-            -o-transition: -o-transform 500ms linear 250ms;
-        }
-
-        svg{display:block; margin:auto;}
-
-        .right{text-align:right;}
-        .nowrap{
-            word-wrap:none;
-            white-space:nowrap;
-        }
-
-        table{
-            width:100%;
-            border:1px solid #ddd;
-            border-collapse:collapse;
-        }
-        thead{
-            background:#eee;
-        }
-        td,th{border:1px solid #ddd;padding:.25rem 1rem}
-        p.note{
-            font-size:.9rem;
-            text-align:right;
-        }
-        .note a{color:inherit;}
-        .twocol{
-             -khtml-columns: auto 2;
-            -webkit-columns: auto 2;
-               -moz-columns: auto 2;
-                -ms-columns: auto 2;
-                    columns: auto 2; /* Opera */
-        }
-        ul.nobullet > li::before{content: ''}
-
-
-        .box{
-            width:200px;
-            line-height:1.3;
-            color:#666
-        }
-        .box img{width:100%;margin:0}
-        form{text-align:center}
-        input[type=number]{ text-align:right; font-size:inherit; width:8rem}
-
-        .backfacedemo{
-            -webkit-perspective-origin: 50% -100px;
-               -moz-perspective-origin: 50% -100px;
-                -ms-perspective-origin: 50% -100px;
-                 -o-perspective-origin: 50% -100px;
-                    perspective-origin: 50% -100px;
-
-            -webkit-perspective: 500px;
-               -moz-perspective: 500px;
-                -ms-perspective: 500px;
-                 -o-perspective: 500px;
-                    perspective: 500px;
-        }
 
 	</style>
 </head>
@@ -178,8 +56,8 @@
     <div class="slide shout" id="Use_Prefixes"><div>
 		<section>
 			<header>
-				<h2>Prefixes still required<br>
-				<span style="font-size:.5em">-o-, -ms-, -moz-, -webkit-</span></h2>
+				<h2>Prefixes still (mostly) required<br>
+				<span style="font-size:.5em">-o-, -moz-, -webkit-</span></h2>
 			</header>
 		</section>
 	</div></div>
@@ -666,134 +544,7 @@
 <!-- <div class="progress"><div></div></div> -->
 <script src="scripts/script.js"></script>
 <script src="scripts/modernizr.js"></script>
-<script>
-var transformorigin = document.getElementById('transformtrigger'),
-    td    = document.getElementById('twoDtransforms'),
-    thd   = document.getElementById('threeDtransforms'),
-    thd   = document.getElementById('threeDtransforms'),
-    bft   = document.getElementById('backfacetrigger'),
-    tfs   = document.getElementById('transformstyletrig'),
-    pdbt  = document.getElementById('perspectivedemobtn'),
-    pstvb = document.getElementById('perpsectivec'),
-    sb    = document.getElementById('stackingbtn'),
-    cbdt  = document.getElementById('containbtn'),
-    /* functions */
-    tochange,
-    twodchange,
-    threedchange,
-    twodreset,
-    theedreset;
-
-tochange = function(e){
-    var demos = document.getElementsByClassName('transordemof'),
-        len = demos.length;
-
-    for(var x=0; x < len; x++){
-        demos[x].classList.toggle('rotate');
-    }
-}
-transformorigin.addEventListener('click', tochange, false);
-
-/* Two D Transforms demo */
-twodchange = function(e){
-    var twod = document.getElementById('twoDtransformObj'), remove, i;
-
-   if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
-
-        console.log( twod.classList );
-
-        // Clear every class but stdemo
-        for( i = 1; i < twod.classList.length; i++){
-            remove = twod.classList.item(i);
-            twod.classList.remove(remove);
-        }
-
-        twod.classList.toggle(e.target.id);
-
-   }
-}
-twodreset = function(e){
-   var twoDObj = document.getElementById('twoDtransformObj')
-   var notstdemo = twoDObj.classList.item(1);
-   twoDObj.classList.remove(notstdemo);
-}
-td.addEventListener('click',twodchange,false);
-td.addEventListener('reset',twodreset,false);
-
-
-/* 3D functions demo */
-threedchange = function(e){
-   var threeDObj, remove,i ;
-
-   if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
-
-        threeDObj = document.getElementById('threeDtransformObj');
-
-        // Clear every class but stdemo
-        for( i = 1; i < threeDObj.classList.length; i++){
-            remove = threeDObj.classList.item(i);
-            threeDObj.classList.remove(remove);
-        }
-        threeDObj.classList.toggle(e.target.id);
-
-   }
-}
-thd.addEventListener('click', threedchange,false);
-
-threedreset = function(e){
-   var notstdemo, threeDObj = document.getElementById('threeDtransformObj');
-
-   for( var i = 1; i < threeDObj.classList.length; i++){
-        var remove = threeDObj.classList.item(i);
-   }
-
-   notstdemo = threeDObj.classList.item(1);
-   threeDObj.classList.remove(notstdemo);
-}
-thd.addEventListener('reset',threedreset,false);
-
-/* Toggle back face slide */
-bft.addEventListener('click',function(e){
-    var faces = document.getElementById('backfacecube').getElementsByTagName('figure'),
-                len = faces.length;
-    for(var i = 0; i < len; i++){
-        faces[i].classList.toggle('bf');
-    }
-},false);
-
-/* Toggle transform style */
-tfs.addEventListener('click', function(e){
-     document.getElementById('transformstylecube').classList.toggle('threed');
-}, false);
-
-
-/* Perspective demo */
-perpsectivec.addEventListener('change', function(e){
-    console.log( e.target.value )
-
-    var  po = document.getElementById('perspectivedemowrap'),
-        lbl = document.getElementById('perpsectivelabel');
-
-        po.style[Modernizr.prefixed('perspective')] = e.target.value+'px';
-
-}, false);
-
-document.getElementById('podform').addEventListener('submit', function(e){
-    e.preventDefault();
-},false);
-
-/* Stacking context */
-sb.addEventListener('click', function(){
-    document.getElementById('lipsumscale').classList.toggle('transform');
-}, false);
-
-/* Containing block */
-cbdt.addEventListener('click', function(){
-   document.getElementById('containingblockdemo').classList.toggle('transform');
-   document.getElementById('containingblocktext').classList.remove('hidden');
-}, false);
-
-</script>
+<script src="scripts/deck.js"></script>
 <!-- Shower presentation software, Copyright © 2010–2012 Vadim Makeev — pepelsbey.net -->
 
 </body>
