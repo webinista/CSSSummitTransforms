@@ -114,11 +114,18 @@
                 bvp = document.getElementById('bvp'),
                 bvptext;
 
-            for(i = 0; i < len; i++){
-                frontfaces[i].classList.toggle('bf');
-            }
 
-            e.target.checked === true ? bvptext = 'visible' : bvptext = 'hidden';
+            if( e.target.checked === true){
+                for(i = 0; i < len; i++){
+                    frontfaces[i].classList.add('bf');
+                }
+                bvptext = 'visible';
+            } else {
+                for(i = 0; i < len; i++){
+                    frontfaces[i].classList.remove('bf');
+                }
+                bvptext = 'hidden'
+            }
             bvp.replaceChild( document.createTextNode(bvptext), bvp.firstChild);
         },
 
@@ -137,7 +144,7 @@
             ctn.style[ Modernizr.prefixed('perspectiveOrigin') ] = Lib.sprintf('%0px %1px',[pox.value,poy.value]);
 
             if( per.value == 0 ){
-                per.value = 110;
+                per.value = 500;
             }
             changepersp.initEvent('change',false,true);
             per.dispatchEvent(changepersp);

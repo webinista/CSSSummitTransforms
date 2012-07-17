@@ -1,0 +1,23 @@
+#stackingcontextdemo{
+    font-size:12px;
+    line-height:1.5;
+}
+
+#stackingcontextdemo p{
+    margin:0rem 1rem 1rem 0;
+}
+
+#lipsumscale{
+    background:#39f;
+    width: 150px;
+    height: 150px;
+    float: left;
+    margin: 0 1rem 1rem 0
+}
+
+#lipsumscale.transform{
+    -webkit-transform: scale(1.8) translate(250px,50px);
+         -o-transform: scale(1.8) translate(250px,50px);
+       -moz-transform: scale(1.8) translate(250px,50px);
+        -ms-transform: scale(1.8) translate(250px,50px);
+}

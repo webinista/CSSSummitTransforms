@@ -227,22 +227,27 @@
             }
         }
 
-        togglebf = function(e){
+    togglebf = function(e){
             var i,
                 frontfaces = document.getElementsByTagName('figure'),
                 len = frontfaces.length,
                 bvp = document.getElementById('bvp'),
                 bvptext;
 
-            for(i = 0; i < len; i++){
-                frontfaces[i].classList.toggle('bf');
+
+            if( e.target.checked === true){
+                for(i = 0; i < len; i++){
+                    frontfaces[i].classList.add('bf');
+                }
+                bvptext = 'visible';
+            } else {
+                for(i = 0; i < len; i++){
+                    frontfaces[i].classList.remove('bf');
+                }
+                bvptext = 'hidden'
             }
-
-            bvp.innerHTML == 'hidden' ? bvptext = 'visible' : bvptext = 'hidden';
             bvp.replaceChild( document.createTextNode(bvptext), bvp.firstChild);
-
-        }
-
+        },
         twodhandler = function(){
            var cub = cb,
                r = rotate,
