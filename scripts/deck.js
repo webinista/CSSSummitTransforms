@@ -6,7 +6,7 @@
         bft   = document.getElementById('backfacetrigger'),
         tfs   = document.getElementById('transformstyletrig'),
         pdbt  = document.getElementById('perspectivedemobtn'),
-        pstvb = document.getElementById('perpsectivec'),
+        perspc = document.getElementById('perpsectivec'),
         sb    = document.getElementById('stackingbtn'),
         cbdt  = document.getElementById('containbtn'),
         /* functions */
@@ -100,7 +100,7 @@
 
 
     /* Perspective demo */
-    perpsectivec.addEventListener('change', function(e){
+    perspc.addEventListener('change', function(e){
         console.log( e.target.value )
 
         var  po = document.getElementById('perspectivedemowrap'),

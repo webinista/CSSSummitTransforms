@@ -1,3 +1,13 @@
+/* Yeah, @import is slower loading, but it's better for organization's sake.
+*/
+@import 'demos/styles/transformorigin.css';
+@import 'demos/styles/transformsinaction.css';
+@import 'demos/styles/perspectiveorigin.css';
+@import 'demos/styles/perspective.css';
+@import 'demos/styles/backface-and-type.css';
+@import 'demos/styles/stackingcontext.css';
+@import 'demos/styles/containingblock.css';
+
 .slide section{
     position:relative;
 }
@@ -97,7 +107,6 @@ p.note{
             columns: auto 2; /* Opera */
 }
 ul.nobullet > li::before{content: ''}
-
 
 .box{
     width:200px;
