@@ -99,9 +99,6 @@ togglebf = function(e){
            str = 'rotate('+r.value+'deg) skewX('+skx.value+'deg) skewY('+sky.value+'deg) scale('+sc.value+') translate('+transx.value+'px,'+transy.value+'px)';
 
         curtrans = cb.style[mtfm] = str;
-
-        console.log( str );
-
     }
 
     persphandler = function(){
@@ -224,14 +221,5 @@ togglebf = function(e){
             e.target.parentNode.classList.toggle('close');
         }, false);
     }
-
-    /* var getcss = document.getElementById('getcss');
-
-    getcss.addEventListener('click', function(){
-
-        alert( ctcurtrans );
-        alert( curtrans );
-
-    },false); */
 }
 window.addEventListener('DOMContentLoaded',init,false);
