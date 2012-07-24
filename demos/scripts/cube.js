@@ -9,7 +9,8 @@ var init = function(){
         ct = document.getElementById('ctn'),
         cb = document.getElementById('cube'),
         rotate = document.getElementById('rotate'),
-        skew = document.getElementById('skew'),
+        skewx = document.getElementById('skewX'),
+        skewy = document.getElementById('skewY'),
         scale = document.getElementById('scale'),
         transx = document.getElementById('translatex'),
         transy = document.getElementById('translatey'),
@@ -27,7 +28,6 @@ var init = function(){
         sy = document.getElementById('sy'),
         sz = document.getElementById('sz'),
         curtrans = '';
-       /* ctcurtrans = ''; */
 
     sideshandler = function(e){
         var figs = document.getElementsByTagName('figure'),
@@ -91,13 +91,16 @@ togglebf = function(e){
     twodhandler = function(){
        var cub = cb,
            r = rotate,
-           sk = skew,
+           skx = skewx,
+           sky = skewy,
            sc = scale,
            t2x = transx,
            t2y = transy,
-           str = 'rotate('+r.value+'deg) skew('+sk.value+'deg) scale('+sc.value+') translate('+transx.value+'px,'+transy.value+'px)';
+           str = 'rotate('+r.value+'deg) skewX('+skx.value+'deg) skewY('+sky.value+'deg) scale('+sc.value+') translate('+transx.value+'px,'+transy.value+'px)';
 
         curtrans = cb.style[mtfm] = str;
+
+        console.log( str );
 
     }
 
@@ -195,7 +198,8 @@ togglebf = function(e){
     sides.addEventListener('change',sideshandler,false);
 
     rotate.addEventListener('change',twodhandler,false);
-    skew.addEventListener('change',twodhandler,false);
+    skewx.addEventListener('change',twodhandler,false);
+    skewy.addEventListener('change',twodhandler,false);
     scale.addEventListener('change',twodhandler,false);
     transx.addEventListener('change',twodhandler,false);
     transy.addEventListener('change',twodhandler,false);
