@@ -14,7 +14,8 @@
         twodchange,
         threedchange,
         twodreset,
-        theedreset;
+        theedreset,
+        podform = document.getElementById('podform');
 
     tochange = function(e){
         var demos = document.getElementsByClassName('transordemof'),
@@ -32,7 +33,6 @@
 
        if( e.target.toString() == '[object HTMLButtonElement]' && e.target.type == 'button'){
 
-            console.log( twod.classList );
 
             // Clear every class but stdemo
             for( i = 1; i < twod.classList.length; i++){
@@ -101,17 +101,18 @@
 
     /* Perspective demo */
     perspc.addEventListener('change', function(e){
-        console.log( e.target.value )
-
-        var  po = document.getElementById('perspectivedemowrap'),
-            lbl = document.getElementById('perpsectivelabel');
-
-            po.style[Modernizr.prefixed('perspective')] = e.target.value+'px';
-
+        var po = document.getElementById('perspectivedemowrap');
+        po.style[Modernizr.prefixed('perspective')] = e.target.value+'px';
     }, false);
 
-    document.getElementById('podform').addEventListener('submit', function(e){
+    podform.addEventListener('submit', function(e){
         e.preventDefault();
+    },false);
+
+    podform.addEventListener('reset', function(e){
+        var po = document.getElementById('perspectivedemowrap');
+        po.style[Modernizr.prefixed('perspective')] = 'none';
+        po.removeAttribute('style');
     },false);
 
     /* Stacking context */

@@ -41,7 +41,7 @@
     <div class="slide shout" id="Use_Prefixes"><div>
 		<section>
 			<header>
-				<h2>Prefixes still (mostly) required<br>
+				<h2>Prefixes still required<br>
 				<span style="font-size:.5em">-o-, -moz-, -ms-, -webkit-</span></h2>
 			</header>
 		</section>
@@ -101,8 +101,8 @@
 			<p>Specifies the x and y position of the origin, relative to the transform object.</p>
 	        <ul>
 	            <li>Keyword positions: <code>left</code>, <code>right</code>, <code>bottom</code>, <code>top</code>, <code>center</code></li>
-	            <li>Percentage values (default = 50% 50%)</li>
 	            <li>Length values</li>
+	            <li>Percentage values (default = 50% 50%)</li>
 	        </ul>
   		</section>
 	</div></div>
@@ -144,8 +144,8 @@
 
             <ul>
 	            <li>Keyword positions: <code>left</code>, <code>right</code>, <code>bottom</code>, <code>top</code>, <code>center</code></li>
-	            <li>Percentage values (default = 50% 50%)</li>
 	            <li>Length values</li>
+	            <li>Percentage values (default = 50% 50%)</li>
 	        </ul>
 		</section>
 	</div></div>
@@ -393,15 +393,15 @@
 			<header>
 				<h2><code>backface-visibility</code></h2>
 			</header>
-            <p><code>visible</code> or <code>hidden</code></p>
+            <p><code>hidden</code> or <code>visible</code></p>
             <div class="backfacedemo">
                   <div class="cube" id="backfacecube">
-                    <figure class="front bf">1</figure>
-                    <figure class="back bf">2</figure>
-                    <figure class="right bf">3</figure>
-                    <figure class="left bf">4</figure>
-                    <figure class="top bf">5</figure>
-                    <figure class="bottom bf">6</figure>
+                    <figure class="front">1</figure>
+                    <figure class="back">2</figure>
+                    <figure class="right">3</figure>
+                    <figure class="left">4</figure>
+                    <figure class="top">5</figure>
+                    <figure class="bottom">6</figure>
                   </div>
             </div>
 
@@ -438,7 +438,7 @@
                 <div id="perspectivedemo"></div>
                 <form id="podform">
                     <p class="txtright">
-                    <input type="number" id="perpsectivec" name="perpsectivec" value="0">px
+                    <input type="number" id="perpsectivec" name="perpsectivec" min="101" placeholder="101">px
                     <button type="reset">Reset</button></p>
                 </form>
             </div>
@@ -447,7 +447,7 @@
 	<div class="slide demo shout" id="ThreeD_Demo"><div>
 		<section>
 			<header>
-				<h2><a href="demos/cube/">Transforms Demo</a></h2>
+				<h2><a href="demos/cube/" target="_blank">Transforms Demo</a></h2>
 			</header>
 		</section>
 	</div></div>

@@ -4,6 +4,10 @@ body {
   margin:0;
 }
 
+a:link{color:#09f}
+a:visited{color:#00c}
+a:hover,a:active{color:#c09}
+
 section,
 header,
 footer,
@@ -175,4 +179,9 @@ input[type=text]{border: 1px solid #bbb}
 input:focus{
     outline:none;
     background: hsl(68, 100%, 50%);
+}
+
+footer{
+    margin-top:10rem;
+    font-size: .8rem;
 }
