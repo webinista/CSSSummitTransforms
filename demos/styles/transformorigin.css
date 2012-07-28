@@ -1,0 +1,67 @@
+figure.transordemof{
+    width:150px;
+    height:150px;
+    display:block;
+    float:left;
+    background:#b20;
+    margin: 2rem 10rem 0rem 5rem;
+    line-height: 150px;
+    text-align:center;
+    color: #fff;
+    -webkit-transition: -webkit-transform 500ms linear;
+       -moz-transition: -moz-transform 500ms linear;
+        -ms-transition: -ms-transform 500ms linear;
+         -o-transition: -o-transform 500ms linear;
+            transition: transform 500ms linear;
+}
+
+figure.transordemof.rotate{
+    -webkit-transition: -webkit-transform 500ms linear;
+       -moz-transition: -moz-transform 500ms linear;
+        -ms-transition: -ms-transform 500ms linear;
+         -o-transition: -o-transform 500ms linear;
+            transition: transform 500ms linear;
+
+    -webkit-transform: rotate(45deg);
+         -o-transform: rotate(45deg);
+       -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg);
+
+}
+figure.transordemof.rotate p{
+    -webkit-transform: rotate(-45deg);
+         -o-transform: rotate(-45deg);
+       -moz-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg);
+}
+
+figure.transordemof.to0{
+    -webkit-transform-origin: 0% 0%;
+         -o-transform-origin: 0% 0%;
+       -moz-transform-origin: 0% 0%;
+        -ms-transform-origin: 0% 0%;
+            transform-origin: 0% 0%;
+}
+figure.transordemof.to50{
+    -webkit-transform-origin: 50% 50%;
+         -o-transform-origin: 50% 50%;
+       -moz-transform-origin: 50% 50%;
+        -ms-transform-origin: 50% 50%;
+            transform-origin: 50% 50%;
+}
+figure.transordemof.to100{
+    -webkit-transform-origin: 100% 100%;
+         -o-transform-origin: 100% 100%;
+       -moz-transform-origin: 100% 100%;
+        -ms-transform-origin: 100% 100%;
+            transform-origin: 100% 100%;
+}
+figure.transordemof.to200{
+    -webkit-transform-origin: 200% 200%;
+         -o-transform-origin: 200% 200%;
+       -moz-transform-origin: 200% 200%;
+        -ms-transform-origin: 200% 200%;
+            transform-origin: 200% 200%;
+}

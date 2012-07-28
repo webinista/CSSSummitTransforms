@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Perspective Playground</title>
+	<link rel="stylesheet" href="../styles/cube.css" media="screen">
+	<link rel="stylesheet" href="../styles/common.css" media="screen">
+	<style media="screen">
+	#t3d{
+	    min-height:9rem;
+	    max-height:13.5rem;
+	}
+	.trigger{cursor:default;}
+
+    br.clear{clear:both; margin:1rem}
+    #cube figure.bf{
+     -webkit-backface-visibility: visible;
+        -moz-backface-visibility: visible;
+         -ms-backface-visibility: visible;
+          -o-backface-visibility: visible;
+             backface-visibility: visible;
+    }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>CSS Transforms</h1>
+</header>
+
+<section id="controlwrap">
+    <h1>Perspective Origin &amp; Perspective </h1>
+    <p>Change values below.</p>
+    <form id="controls">
+
+       <fieldset>
+
+            <p class="clear" id="toggle">
+                <input type="checkbox" id="backface" name="backface" checked>
+                <label for="backface" class="checkbox mono">backface-visibility:</label><code id="bvp">visible</code></label>
+            </p>
+        </fieldset>
+
+
+        <fieldset id="t3d">
+          <legend class="trigger">Perspective</legend>
+           <fieldset id="perspv">
+
+                <p>
+                    <label for="per" class="text mono">perspective-origin</label>
+                    <input type="text" id="perorx" name="perorx" value="0" size="4" maxlength="5" class="txtright">px
+                    <input type="text" id="perory" name="perory" value="0" size="4" maxlength="5" class="txtright">px
+               </p>
+                <br class="clear">
+
+               <p>
+                    <label for="per" class="text mono">perspective</label>
+                    <input type="text" id="per" name="per" value="0" size="4" maxlength="5" class="txtright">px
+               </p>
+
+
+            </fieldset>
+
+
+        </fieldset>
+        <p>
+            <button type="reset">Reset</button>
+        </p>
+    </form>
+
+    <div id="ft">
+        <p><a href="http://www.w3.org/TR/css3-transforms/">CSS3 Transforms Specification</a>.</p>
+        <p>Thanks to <b>David DeSandro</b> for his <a href="http://desandro.github.com/3dtransforms/">cube code</a>.</p>
+    </div>
+</section>
+
+<section id="demo">
+    <section id="ctn" class="container">
+      <div id="cube">
+        <figure class="front bf">1</figure>
+        <figure class="back bf">2</figure>
+        <figure class="right bf">3</figure>
+        <figure class="left bf">4</figure>
+        <figure class="top bf">5</figure>
+        <figure class="bottom bf">6</figure>
+      </div>
+    </section>
+</section>
+
+<script src="../../scripts/modernizr.js"></script>
+<script src="../scripts/js.js"></script>
+
+<script type="text/javascript" src="../scripts/persp.js"></script>
+</body>
+</html>

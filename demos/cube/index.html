@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Transforms Playground</title>
+	<link rel="stylesheet" href="../styles/cube.css" media="screen">
+	<link rel="stylesheet" href="../styles/common.css" media="screen">
+
+</head>
+<body>
+
+<header>
+    <h1>CSS Transforms</h1>
+</header>
+
+<section id="controlwrap">
+    <h1>Transforms Playground</h1>
+    <p>Change values below.</p>
+    <form id="controls">
+
+       <fieldset>
+            <p id="numsides">
+                <label for="sides"># of sides</label>
+                <select id="sides" name="sides">
+                    <option value="1" selected>1 (square)</option>
+                    <option value="6">6 (cube)</option>
+                </select>
+            </p>
+
+            <p class="clear disable" id="toggle">
+                <input type="checkbox" id="backface" name="backface" disabled>
+                <label for="backface" class="checkbox mono">backface-visibility:</label><code id="bvp">hidden</code></label>
+            </p>
+        </fieldset>
+
+        <fieldset id="t2d">
+          <legend class="trigger">2D Transforms</legend>
+            <p>
+                <label for="rotate" class="text mono">rotate</label>
+                <input type="text" id="rotate" name="rotate" value="0" size="4" maxlength="5" class="txtright">&deg;
+            </p>
+
+            <p>
+                <label for="skewX" class="text mono">skewX</label>
+                <input type="text" id="skewX" name="skewX" value="0" size="4" maxlength="5" class="txtright">&deg;
+            </p>
+            <p>
+                <label for="skewY" class="text mono">skewY</label>
+                <input type="text" id="skewY" name="skewY" value="0" size="4" maxlength="5" class="txtright">&deg;
+            </p>
+
+            <p>
+                <label for="scale" class="text mono">scale</label>
+                <input type="text" id="scale" name="scale" value="1" size="4" maxlength="5" class="txtright">
+            </p>
+
+            <fieldset id="translate">
+                <legend class="mono unbold">translate</legend>
+                <p>
+                    <label for="translatex">x</label>
+                    <input type="text" id="translatex" name="scale" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+                <p>
+                    <label for="translatey">y</label>
+                    <input type="text" id="translatey" name="scale" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+            </fieldset>
+        </fieldset>
+
+        <fieldset id="t3d">
+          <legend class="trigger">3D Transforms</legend>
+           <fieldset id="perspv">
+               <p>
+                    <label for="per" class="text mono">perspective</label>
+                    <input type="text" id="per" name="per" value="0" size="4" maxlength="5" class="txtright">px
+               </p>
+
+
+            </fieldset>
+
+          <fieldset id="rotate3d">
+                <legend class="mono">rotate3d</legend>
+                <p>
+                    <label for="rx" class="text">x-vector</label>
+                    <input type="text" id="rx" name="rx" value="0" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="ry" class="text">y-vector</label>
+                    <input type="text" id="ry" name="ry" value="0" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="rz" class="text">z-vector</label>
+                    <input type="text" id="rz" name="rz" value="0" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="ra" class="text">angle</label>
+                    <input type="text" id="ra" name="ra" value="0" size="4" maxlength="5" class="txtright">&deg;
+                </p>
+           </fieldset>
+
+           <fieldset id="translate3d">
+                <legend class="mono">translate3d</legend>
+                <p>
+                    <label for="tx" class="text">x-axis</label>
+                    <input type="text" id="tx" name="tx" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+                <p>
+                    <label for="ty" class="text">y-axis</label>
+                    <input type="text" id="ty" name="ty" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+                <p>
+                    <label for="tz" class="text">z-axis</label>
+                    <input type="text" id="tz" name="tz" value="0" size="4" maxlength="5" class="txtright">px
+                </p>
+           </fieldset>
+
+           <fieldset id="scale3d">
+                <legend class="mono">scale3d</legend>
+                <p>
+                    <label for="sx" class="text">x-<abbr title="dimension">dim.</abbr></label>
+                    <input type="text" id="sx" name="sx" value="1" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="sy" class="text">y-<abbr title="dimension">dim.</abbr></label>
+                    <input type="text" id="sy" name="sy" value="1" size="4" maxlength="5" class="txtright">
+                </p>
+                <p>
+                    <label for="sz" class="text">z-<abbr title="dimension">dim.</abbr></label>
+                    <input type="text" id="sz" name="sz" value="1" size="4" maxlength="5" class="txtright">
+                </p>
+           </fieldset>
+
+
+        </fieldset>
+        <p>
+            <button type="reset">Reset</button>
+        </p>
+    </form>
+
+    <div id="ft">
+        <p><a href="http://www.w3.org/TR/css3-transforms/">CSS3 Transforms Specification</a>.</p>
+        <p>Thanks to <b>David DeSandro</b> for his <a href="http://desandro.github.com/3dtransforms/">cube code</a>.</p>
+    </div>
+</section>
+
+<section id="demo">
+    <section id="ctn" class="container">
+      <div id="cube">
+        <figure class="front">1</figure>
+        <figure class="back hide">2</figure>
+        <figure class="right hide">3</figure>
+        <figure class="left hide">4</figure>
+        <figure class="top hide">5</figure>
+        <figure class="bottom hide">6</figure>
+      </div>
+    </section>
+</section>
+
+<script type="application/javascript" src="../../scripts/modernizr.js"></script>
+<script type="application/javascript" src="../scripts/js.js"></script>
+<script type="application/javascript" src="../scripts/cube.js"></script>
+</body>
+</html>

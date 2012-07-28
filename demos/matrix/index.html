@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Matrix Demo</title>
+	<link rel="stylesheet" href="../styles/common.css" media="screen">
+	<link rel="stylesheet" href="../styles/matrix.css" media="screen">
+</head>
+<body>
+	<header>
+        <h1>CSS Transforms</h1>
+	</header>
+
+	<article>
+	<h1>Matrix Transform Function Demo</h1>
+	    <p>Adjust the values below to see the effect on the object. Use the Reset button or <kbd>esc</kbd> key to reset the form and the object.</p>
+
+	     <form id="matrix">
+            <p class="center">
+            transform: <output id="result" class="center">matrix(1,0,0,1,0,0)</output>
+            </p>
+
+            <figure id="object"></figure>
+
+
+            <p class="center">
+            <input type="text" name="m11" id="m11" value="1" size="3">
+            <input type="text" name="m12" id="m12" value="0" size="3">
+            <input type="text" name="m13" id="m13" value="0" size="3">
+            <input type="text" name="m14" id="m14" value="1" size="3">
+            <input type="text" name="m21" id="m21" value="0" size="3">
+            <input type="text" name="m22" id="m22" value="0" size="3">
+
+            <button type="reset">Reset</button>
+            </p>
+        </form>
+
+	</article>
+	<footer><p>&copy; 2012 Tiffany B. Brown. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>. Also see the <a href="../matrix3d/"><code>matrix3d()</code> demo</a>.</p></footer>
+<script type="application/javascript" src="../../scripts/modernizr.js"></script>
+<script type="application/javascript" src="../scripts/matrix.js"></script>
+</body>
+</html>

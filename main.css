@@ -1,0 +1,132 @@
+/* Yeah, @import is slower loading, but it's better for organization's sake.
+*/
+@import 'demos/styles/transformorigin.css';
+@import 'demos/styles/transformsinaction.css';
+@import 'demos/styles/perspectiveorigin.css';
+@import 'demos/styles/perspective.css';
+@import 'demos/styles/backface-and-type.css';
+@import 'demos/styles/stackingcontext.css';
+@import 'demos/styles/containingblock.css';
+
+.slide section{
+    position:relative;
+}
+.slide section:before{background:none;}
+.slide header{margin-bottom:2rem;}
+
+/* .slide section:before{
+    background:none;
+} */
+.slide h2 a{text-decoration: none;}
+
+.hidden{visibility: hidden;}
+
+#Cover section{
+    background-color: #c00;
+    background-image:     -o-linear-gradient(bottom, #b00,#f00);
+    background-image:   -moz-linear-gradient(bottom, #b00,#f00);
+    background-image:    -ms-linear-gradient(bottom, #b00,#f00);
+    background-image:-webkit-linear-gradient(bottom, #b00,#f00);
+    background-image: linear-gradient(bottom, #b00,#f00);
+}
+#Cover h2, #Cover h3{
+    color:#FFF;
+    text-shadow: 1px 1px 3px #300;
+}
+#Cover h2 {
+    font-size:70px;
+}
+
+#Cover h3 {
+    font-size:40px;
+    text-align:right;
+    margin-top: 70px;
+}
+
+.slide.warning section{
+   background-color: #fff;
+   background-image: -o-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                     -o-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+   background-image: -moz-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                     -moz-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+   background-image: -ms-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                     -ms-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+   background-image: -webkit-repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                     -webkit-repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+   background-image: repeating-linear-gradient(-45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px),
+                     repeating-linear-gradient(45deg, #000, #000 35px, rgba(255,236,0,.8) 35px, rgb(255,236,0) 70px);
+   background-size: 100% 5rem;
+   background-repeat: repeat-x;
+   background-position: top, bottom;
+}
+.slide.warning section h2{color:#000}
+.graphpaper{
+    background-image: url(images/graphpaper.svg);
+    background-position: center;
+}
+.demo.graphpaper{
+    width:100%;
+    min-height: 22rem;
+    border: 1px solid rgba(51,102,153,.5);
+    padding:0;
+    background-position:-1px -1px;
+}
+.center{display:block; margin:auto;}
+
+#WhatAreTransforms > div{
+    -o-transition: -o-transform 500ms linear 250ms;
+}
+
+svg{display:block; margin:auto;}
+
+.right{text-align:right;}
+.nowrap{
+    word-wrap:none;
+    white-space:nowrap;
+}
+
+table{
+    width:100%;
+    border:1px solid #ddd;
+    border-collapse:collapse;
+}
+thead{
+    background:#eee;
+}
+td,th{border:1px solid #ddd;padding:.25rem 1rem}
+p.note{
+    font-size:.9rem;
+    text-align:right;
+}
+.note a{color:inherit;}
+.twocol{
+     -khtml-columns: auto 2;
+    -webkit-columns: auto 2;
+       -moz-columns: auto 2;
+        -ms-columns: auto 2;
+            columns: auto 2; /* Opera */
+}
+ul.nobullet > li::before{content: ''}
+
+.box{
+    width:200px;
+    line-height:1.3;
+    color:#666
+}
+.box img{width:100%;margin:0}
+form{text-align:center}
+input[type=number]{ text-align:right; font-size:inherit; width:8rem}
+
+.backfacedemo{
+    -webkit-perspective-origin: 50% -100px;
+       -moz-perspective-origin: 50% -100px;
+        -ms-perspective-origin: 50% -100px;
+         -o-perspective-origin: 50% -100px;
+            perspective-origin: 50% -100px;
+
+    -webkit-perspective: 500px;
+       -moz-perspective: 500px;
+        -ms-perspective: 500px;
+         -o-perspective: 500px;
+            perspective: 500px;
+}
