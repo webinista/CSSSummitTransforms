@@ -5,10 +5,11 @@
 }
 
 #containingblockdemo.transform{
-    -webkit-transform: skew(-35deg);
-         -o-transform: skew(-35deg);
-       -moz-transform: skew(-35deg);
-        -ms-transform: skew(-35deg);
+    -webkit-transform: skewX(-35deg);
+         -o-transform: skewX(-35deg);
+       -moz-transform: skewX(-35deg);
+        -ms-transform: skewX(-35deg);
+            transform: skewX(-35deg);
 }
 #unskew{
     width: 200px;
