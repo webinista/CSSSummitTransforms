@@ -163,7 +163,7 @@ figure{display;block;margin:auto;}
 input{font: 1.1rem / 1 monospace;}
 .center{text-align:center;}
 .right{text-align:right;}
-label,form p{font-family:monospace}
+label.code{font-family:monospace}
 
 form p{ margin:1rem; }
 

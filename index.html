@@ -75,7 +75,7 @@
 		</section>
 	</div></div>
 
-    <div class="slide" id="Local_Coordinate_System"><div>
+    <div class="slide" id="Local_Coordinate_System_1"><div>
 		<section>
 			<header>
             <h2>Transforms Create a Local Coordinate System</h2>
@@ -83,6 +83,25 @@
 			<p><img src="images/localcoordinates.png" class="center" alt="A local coordinate system"></p>
 		</section>
 	</div></div>
+
+   <div class="slide demo" id="Local_Coordinate_System_2"><div>
+		<section>
+			<header>
+				<h2>Transforms Create a Local Coordinate System</h2>
+			</header>
+			<p>
+			    <code style="font-size:1.3rem;">transform:none</code> versus
+			    <code style="font-size:1.3rem;">transform: translate(100px,100px);</code></p>
+            <div class="center transex2" style='float:left'>
+                <div>&nbsp;</div>
+            </div>
+
+            <div id="translateexample" class="center transex2">
+                <div>&nbsp;</div>
+            </div>
+        </section>
+	</div></div>
+
 
     <div class="slide" id="Transform_Origin"><div>
 		<section>
@@ -1503,7 +1522,7 @@
    <div class="slide shout" id="Thats_A_Lot_Of_Math"><div>
 		<section>
 			<header>
-            <h2>Hate math?<br>Use transform functions</h2>
+            <h2>Fear matrix math?<br>Use transform functions</h2>
 			</header>
 		</section>
 	</div></div>
@@ -1535,7 +1554,7 @@
 			<header>
 				<h2>2D Transforms in action</h2>
 			</header>
-            <div id="twoDtransformObj" class="stdemo"></div>
+            <div id="twoDtransformObj" class="stdemo stdemotrans"></div>
             <form id="twoDtransforms">
                 <p><button type="button" id="rotate">rotate</button>
                 <button type="button" id="skewX">skewX</button>
@@ -1576,7 +1595,7 @@
 			<header>
 				<h2>3D Transforms in action</h2>
 			</header>
-			<div id="threeDtransformObj" class="stdemo"></div>
+			<div id="threeDtransformObj" class="stdemo stdemotrans"></div>
             <form id="threeDtransforms">
                 <p><button type="button" id="rotate3d">rotate3d</button>
                 <button type="button" id="scale3d">scale3d</button>
@@ -1689,22 +1708,16 @@
 			<header class="nomargin">
 				<h2>Transforms create a new <a href="http://www.w3.org/TR/CSS21/visuren.html#layers" target="_blank">stacking context</a></h2>
 			</header>
-
 			<div id="stackingcontextdemo">
             <div id="lipsumscale"></div>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis accumsan faucibus tortor id porta. Sed imperdiet, tortor vitae viverra vestibulum, diam lorem fermentum mauris, quis bibendum erat dolor non ante. Quisque quis augue ut purus feugiat semper sit amet sit amet mauris. Integer commodo ligula id velit blandit eget dictum sem fringilla. Nullam dolor dui, laoreet eget hendrerit a, fermentum id libero.</p>
-
             <p>Morbi posuere condimentum leo, ut venenatis enim semper aliquet. Nunc rutrum varius iaculis. Quisque adipiscing mollis est. Nunc est nisl, fermentum non scelerisque id, vulputate id urna. Mauris eget quam vel eros molestie iaculis. Sed vulputate blandit dui ut mollis. Curabitur consectetur placerat odio in porta. Proin tempor, libero in ultrices venenatis, lacus turpis euismod leo, a placerat nisi nisl vitae odio.</p>
-
             <p>Etiam eget neque diam. Donec eget ligula vel turpis aliquet dignissim sit amet sed magna. Aenean a metus congue nunc tempus elementum sit amet sit amet mi. In hac habitasse platea dictumst. Cras molestie tempor erat, ultricies placerat neque fringilla in. Fusce tincidunt elementum massa a hendrerit.</p>
-
             <p>Nullam mollis nisl et est molestie quis lacinia leo imperdiet. Vestibulum faucibus varius velit, in pretium sem consequat et. Mauris pharetra dui quis tortor ultricies et convallis purus tincidunt. Curabitur ullamcorper vehicula ultrices. Vestibulum elit leo, fermentum rutrum convallis quis, gravida imperdiet risus.</p>
-
             <p class="txtright">
                 <button id="stackingbtn">Toggle transform</button>
             </p>
             </div>
-
         </section>
 	</div></div>
 
