@@ -69,12 +69,10 @@
         -ms-transform: perspective(200) rotate3d(100,150,90,35deg);
             transform: perspective(200) rotate3d(100,150,90,35deg);
 }
-
-.stdemo{
+.stdemotrans{
     -webkit-transition: -webkit-transform 500ms linear;
          -o-transition: -o-transform 500ms linear;
        -moz-transition: -moz-transform 500ms linear;
         -ms-transition: -ms-transform 500ms linear;
             transition: transform 500ms linear;
-
 }

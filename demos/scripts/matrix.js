@@ -1,6 +1,6 @@
 (function(){
     var inputs = document.querySelectorAll('input[type=text]'),
-        ilen   = inputs.length;
+        ilen   = inputs.length,
         obj    = document.getElementById('object'),
         form   = document.getElementById('matrix'),
         out    = document.getElementById('result'),
@@ -37,6 +37,7 @@
     }
 
     form.addEventListener('change',onchange,false);
+    form.addEventListener('submit',function(e){ e.preventDefault(); },false);
 
     form.addEventListener('reset', function(e){
         obj.style[Modernizr.prefixed('transform')] = 'none';

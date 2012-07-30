@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,user-scalable=yes">
+	<title>Rotation Demo</title>
+	<link rel="stylesheet" href="../styles/common.css" media="screen">
+	<link rel="stylesheet" href="../styles/rotation.css" media="screen">
+</head>
+<body>
+	<header>
+        <h1>CSS Transforms</h1>
+	</header>
+
+	<article>
+	<h1>Rotation Demo with a Transition</h1>
+	    <p>Play with positive and negative degree values, and whether or not to add a transition.</p>
+
+	     <form id="rotation">
+            <p class="center">
+            <label for="result" class="code">transform:<label> <output id="result" class="center">rotate(0deg)</output>
+            </p>
+
+            <figure id="object"></figure>
+
+
+            <p class="center">
+            <label for="rotate">Enter the number of degrees:<label>
+            <br><input type="text" name="rotate" id="rotate" value="0" size="3">
+            <button type="reset">Reset</button>
+            </p>
+            <p class="center">
+            <label for="transition">Apply a transition:</label>
+            <input type="checkbox" name="transition" id="transition">
+        </form>
+
+	</article>
+	<footer><p>&copy; 2012 Tiffany B. Brown. <a rel="license" href="http://creativecommons.org/licenses/by/3.0/"><img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by/3.0/80x15.png" /></a>  This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/">Creative Commons Attribution 3.0 Unported License</a>.</p></footer>
+<script type="application/javascript" src="../../scripts/modernizr.js"></script>
+<script type="application/javascript" src="../scripts/rotate.js"></script>
+</body>
+</html>
