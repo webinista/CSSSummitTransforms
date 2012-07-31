@@ -38,7 +38,6 @@
 
     form.addEventListener('change',onchange,false);
     form.addEventListener('submit',function(e){ e.preventDefault(); },false);
-
     form.addEventListener('reset', function(e){
         obj.style[Modernizr.prefixed('transform')] = 'none';
         out.innerHTML = orig;
