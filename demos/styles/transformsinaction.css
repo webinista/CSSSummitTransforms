@@ -77,3 +77,11 @@
         -ms-transition: -ms-transform 500ms linear;
             transition: transform 500ms linear;
 }
+
+#threeDtransformObjWrap{
+    -webkit-perspective: 1000px;
+         -o-perspective: 1000px;
+       -moz-perspective: 1000px;
+        -ms-perspective: 1000px;
+            perspective: 1000px;
+}
